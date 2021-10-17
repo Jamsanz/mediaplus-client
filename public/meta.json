@@ -1,0 +1,24 @@
+{
+  "name": "mediaplus",
+  "plugins": [
+    {
+      "name": "Media Research",
+      "description": "Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit.",
+      "url": "https://getbootstrap.com/docs/5.0/getting-started/introduction/",
+      "icon": "fas fa-search"
+    },
+    {
+      "name": "Media Campaign",
+      "description": "Next.js comes with built-in support for CSS and styled-jsx. Styled-jsx is full, scoped and component-friendly CSS support for JSX (rendered on the server or the client).",
+      "url": "https://github.com/vercel/styled-jsx",
+      "icon":"far fa-user"
+    },
+    {
+      "name": "Fetch",
+      "description": "Next.js has a built-in polyfill for the fetch API. You don't need to worry about using it on either server or client side.",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API",
+      "icon":"fas fa-briefcase"
+    }
+  ]
+}
+

@@ -30,8 +30,10 @@ const ContactForm: React.FC = ():JSX.Element => {
         const userData  = {...user, status: 'New'}
         console.log(userData);
         const response = await http.post('/contacts', userData);
-        response.status === 201 && setLoading(!Loading);
-        toastr.success(`${(response as any).data.message}`)
+        setLoading(!Loading);
+        toastr.success(`${(response as any).data.message}`);
+        setTimeout(()=>window.location.reload(), 1500);
+        // setUser(user => user?.email: "",);
       } catch (error: any) {
         setLoading(false);
         toastr.error(`${error}`);

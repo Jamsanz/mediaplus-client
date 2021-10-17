@@ -4,7 +4,7 @@ import toastr from 'toastr';
 import 'toastr/build/toastr.css'
 import Swal from 'sweetalert2';
 
-const baseURL = process.env.NODE_ENV === 'development' ? "http://localhost:5000" : undefined;
+const baseURL = process.env.NODE_ENV === 'development' ? "http://localhost:5000" : "http://localhost:5000";
 
 export const http = axios.create({
     baseURL,
@@ -38,6 +38,18 @@ export const Alert = () => (
     showConfirmButton: true,
     confirmButtonText: "UPDATE",
     confirmButtonColor: "green",
+  })
+);
+export const DeleteAlert = () => (
+  Swal.fire({
+    title: "Delete Record",
+    text: "Are you sure you want to delete this record?",
+    icon: "warning",
+    cancelButtonText: "CANCEL",
+    showCancelButton: true,
+    showConfirmButton: true,
+    confirmButtonText: "DELETE",
+    confirmButtonColor: "red",
   })
 );
   

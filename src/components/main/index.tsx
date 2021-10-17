@@ -18,6 +18,7 @@ export const Main: React.FC = (): JSX.Element => {
             <Button
               variant="primary"
               size="lg"
+              href="#contact"
             >
               Get In touch
             </Button>

@@ -1,9 +1,10 @@
 {
+  "homepage": "https://jamsanz.github.io/mediaplus-client",
   "name": "mediaplus",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next",
     "build": "next build",
     "start": "next start",
     "lint": "eslint '**/*.{js,jsx,ts,tsx}'",

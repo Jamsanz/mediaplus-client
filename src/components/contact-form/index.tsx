@@ -11,7 +11,6 @@ import {
   Jumbotron,
   Row } from 'react-bootstrap';
 import toastr, { http} from 'utils/utils';
-import { AxiosError, AxiosResponse } from 'axios';
 
 const ContactForm: React.FC = ():JSX.Element => {
     const [user, setUser] = useState<IUser>();
@@ -35,7 +34,6 @@ const ContactForm: React.FC = ():JSX.Element => {
         toastr.success(`${(response as any).data.message}`)
       } catch (error: any) {
         setLoading(false);
-        console.log(error);
         toastr.error(`${error}`);
       }
       

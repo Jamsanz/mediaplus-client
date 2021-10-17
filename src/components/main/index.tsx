@@ -5,7 +5,7 @@ import { Button } from "@components";
 
 export const Main: React.FC = (): JSX.Element => {
   return (
-    <div className="Media-header py-5" >
+    <div className="Media-header py-5" id="home">
       <Container className="mt-5">
         <Row className="py-5">
           <Col lg={6} md={6} xs={12}>
@@ -13,13 +13,13 @@ export const Main: React.FC = (): JSX.Element => {
               <span id="plus">@</span>Media+ Consultancy
             </h1>
             <p className="lead">
-              Your number one Research and Media plug!
+              Your number one Research and Media consult!
             </p>
             <Button
               variant="primary"
               size="lg"
             >
-              Get Started
+              Get In touch
             </Button>
         </Col>
         <Col lg={6} md={6} xs={12}>

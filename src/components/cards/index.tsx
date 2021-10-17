@@ -1,11 +1,10 @@
 import React from "react";
 import { Row, Col, Container, Card } from "react-bootstrap";
-
 import data from "@public/meta.json";
 
 export const Cards: React.FC = () => {
   return (
-    <div className="grey-1">
+    <div className="grey-1" id="services">
       <Container className="my-5 flex-grow-1">
         <div className="services-header my-5 text-center">
           <h1 className="text-center">

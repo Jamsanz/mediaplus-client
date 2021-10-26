@@ -5,12 +5,18 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  scroll-behavior: smooth;
 }
 
 #plus{
   color: rgb(151, 151, 223);
 }
 
+.m-auto{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
 
 .paper{
   padding: 10px;
@@ -53,6 +59,56 @@ body {
 .indigo-text{
   color: #9C91FF;
 }
+
+.credit-card-body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px 0px;
+  width: 100%;
+  min-height: 100vh;
+}
+.form{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  row-gap: 10px;
+  align-items: flex-start;
+}
+
+.contact-input input, select{
+  border: none;
+  width: 88%;
+  margin-left: 15px;
+}
+
+
+.contact-input input:focus, select:focus, textarea:focus{
+  outline: none;
+}
+
+.contact-input {
+  position: relative;
+  width: 100%;
+  background-color: white;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 7px;
+}
+
+
+
+/* .form input[type=text]{
+  width: 300px;
+  border: 1px solid rgba(0,0,0,0.3);
+  padding: 5px;
+  border-radius: 5px;
+}
+.form input[type="number"]{
+  width: 300px;
+} */
 hr {
   width: 10%;
   margin-left: auto;
@@ -69,12 +125,18 @@ hr {
     padding: 15px;
   } 
 }
+.p{
+  text-align: justify;
+}
+.section p{
+  text-align: justify
+}
 .text-about{
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow: auto;
   padding: 30px;
-  height: 450px;
+  height: 500px;
   margin: 10px;
   width: auto;
   background-color: white;
@@ -104,6 +166,10 @@ hr {
   }
 }
 
+.transition {
+  transition: animation 2s ease-in;
+}
+
 
 #plus{
   animation: tracking-in-expand 1.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
@@ -121,7 +187,8 @@ hr {
   }
 }
 
-.Media-header{
+/* .Media-header{
+} */
   /* background-image: url('/images/postIL.png');
   background-color: rgba(255, 255, 255, 0.6);
   filter: blur(5px);
@@ -130,7 +197,7 @@ hr {
   /* object-fit: cover;
   background-repeat: no-repeat; */
   /* filter: blur(5px); */
-}
-.img{
+
+/* .img{
   
-}
+} */

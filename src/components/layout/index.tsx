@@ -1,9 +1,20 @@
 import { Footer } from '@components/footer'
 import { Header } from '@components/header'
 import Head from 'next/head'
-import React from 'react'
+import React, { useEffect } from 'react'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Layout = ({children}:any): JSX.Element => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      easing: 'ease-in-out',
+      once: true,
+      mirror: false
+    });
+    AOS.refresh();
+  }, []);
     return (
         <>
         <Head>

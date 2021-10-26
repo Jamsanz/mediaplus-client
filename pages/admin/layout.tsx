@@ -17,6 +17,12 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import Head from 'next/head';
+import $ from 'jquery';
+import { useEffect } from 'react';
+// const { JSDOM } = require( "jsdom" );
+// const { window } = new JSDOM( "" );
+// const $ = require( "jquery" )( window );
 
 const drawerWidth = 240;
 
@@ -101,8 +107,14 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  useEffect(() => {
+      ($('#example') as any).DataTable();
+  }, [])
 
   return (
+    <>
+    <Head>
+    </Head>
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
@@ -146,6 +158,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
         {children}
       </Box>
     </Box>
+    </>
   );
 }
 export default AdminLayout

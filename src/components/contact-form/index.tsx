@@ -1,5 +1,5 @@
 import { IUser } from '../../interfaces/IUser';
-import React, { ChangeEvent, FormEvent, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { 
     Button,
   Col,
@@ -11,12 +11,14 @@ import {
   Jumbotron,
   Row } from 'react-bootstrap';
 import toastr, { http} from 'utils/utils';
+import AOS from 'aos';
+import 'aos/dist/aos.css'
 
 const ContactForm: React.FC = ():JSX.Element => {
     const [user, setUser] = useState<IUser>();
     const [Loading, setLoading] = useState<boolean>(false);
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>): void => {
       const {name, value} = e.target;
       const data: {[key: string]: any} = {...user};
       data[name] = value;
@@ -41,32 +43,43 @@ const ContactForm: React.FC = ():JSX.Element => {
       
     }
 
+    useEffect(() => {
+      AOS.init({
+        duration: 1000,
+        easing: 'ease-in-out',
+        once: true,
+        mirror: false
+      });
+      AOS.refresh();
+    }, []);
+
     return (
+      <div className="grey-1">
         <Container id="contact">
           <Row>
             <Col lg={6}>
-              <Jumbotron className="mt-5 grey-1">
-                <h1>Lorem Ipsum</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque laboriosam ullam, neque,
-                   error quia ab cupiditate odit illo
-                   obcaecati cumque consequuntur, assumenda quis vel magnam eum eos beatae iusto molestiae.
+              <Jumbotron className="mt-5" data-aos="fade-right">
+                <h1>Get In Touch</h1>
+                <p className='mt-4 text-left fa-1x'>
+                   <i className="fas fa-map-marker-alt mr-3 "></i>
+                   Ahmadu Bello University Zaria (A.B.U), Mass Comm.
                 </p>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat dolor dolores excepturi aspernatur repudiandae
-                   iste iure praesentium architecto voluptas laborum
-                  unde repellendus provident, voluptatibus consequuntur, accusantium reiciendis. Repudiandae, ab. Ipsam?
+                  <i className="fas fa-phone mr-3"></i>
+                  08012345678
+                </p>
+                <p>
+                  <i className="fas fa-envelope mr-3"></i>
+                  mediaP@gmail.com
                 </p>
               </Jumbotron>
             </Col>
-            <Col lg={6} className="py-5">
+            <Col lg={6} className="py-5" data-aos="fade-left">
                 <h3 className="text-center mb-3">Contact Us</h3>
               <Form role="form" onSubmit={handleSubmit}>
-                <FormGroup>
-                  <InputGroup>
-                    <InputGroup.Text className="addon">
+                <div className="contact-input">
                     <i className="fas fa-user"></i>
-                    </InputGroup.Text>
-                    <FormControl
+                    <input
                       id="name"
                       placeholder="Full Name"
                       type="text"
@@ -75,30 +88,22 @@ const ContactForm: React.FC = ():JSX.Element => {
                       value={user?.name}
                       required
                     />
-                  </InputGroup>
-                </FormGroup>
-                <FormGroup>
-                  <InputGroup>
-                    <InputGroup.Text className="addon">
-                    <i className="fas fa-phone"></i>
-                    </InputGroup.Text>
-                    <FormControl
-                      id="phone"
-                      placeholder="Phone"
-                      type="text"
-                      onChange={handleChange}
-                      name="phone"
-                      value={user?.phone}
-                      required
-                    />
-                  </InputGroup>
-                </FormGroup>
-                <FormGroup>
-                  <InputGroup>
-                    <InputGroup.Text className="addon">
-                    <i className="fas fa-at"></i>
-                    </InputGroup.Text>
-                    <FormControl
+                </div>
+                <div className="contact-input">
+                  <i className="fas fa-phone"></i>
+                  <input
+                    id="phone"
+                    placeholder="Phone"
+                    type="text"
+                    onChange={handleChange}
+                    name="phone"
+                    value={user?.phone}
+                    required
+                  />
+                </div>
+                <div className="contact-input">
+                  <i className="fas fa-at"></i>
+                    <input
                       id="email"
                       placeholder="Email"
                       type="text"
@@ -107,18 +112,12 @@ const ContactForm: React.FC = ():JSX.Element => {
                       value={user?.email}
                       required
                     />
-                  </InputGroup>
-                </FormGroup>
-                <FormGroup>
-                  <InputGroup>
-                    <InputGroup.Text className="addon">
+                </div>
+                <div className="contact-input">
                     <i className="fas fa-network-wired"></i>
-                    </InputGroup.Text>
-                    <FormControl
+                    <select
                       id="service"
-                      as="select"
                       placeholder="Service required"
-                      type="text"
                       onChange={handleChange}
                       name="service"
                       value={user?.service}
@@ -127,27 +126,23 @@ const ContactForm: React.FC = ():JSX.Element => {
                       <option value="">Service Required</option>
                       <option value="Media Campaign">Media Campaign</option>
                       <option value="Research">Research</option>
-                   </FormControl>
-                  </InputGroup>
-                </FormGroup>
+                   </select>
+                </div>
                 <FormGroup>
                   <InputGroup>
-                    <InputGroup.Text
-                    className="addon"
-                    >
-                    <i className="fas fa-envelope"></i>
+                    <InputGroup.Text className="addon">
+                      <i className="fas fa-envelope msg"></i>
                     </InputGroup.Text>
-                    <FormControl
-                      id="message"
-                      as="textarea"
-                      style={{height:"100px"}}
-                      placeholder="Message"
-                      type="text"
-                      onChange={handleChange}
-                      name="message"
-                      value={user?.message}
+                      <FormControl
+                        id="message"
+                        as="textarea"
+                        style={{height:"100px"}}
+                        placeholder="Message"
+                        onChange={handleChange}
+                        name="message"
+                        value={user?.message}
                     />
-                  </InputGroup>
+                    </InputGroup>
                 </FormGroup>
                 <FormGroup>
                   <Button
@@ -164,6 +159,7 @@ const ContactForm: React.FC = ():JSX.Element => {
             </Col>
           </Row>
         </Container>
+        </div>
     )
 }
 

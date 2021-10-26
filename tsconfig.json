@@ -15,18 +15,44 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@components": ["src/components"],
-      "@styles/*": ["src/styles/*"],
-      "@styles": ["src/styles"],
-      "@public/*": ["public/*"],
-      "@public": ["public"],
-      "@redux/*": ["src/redux/*"],
-      "@redux": ["src/redux"],
-      "@interfaces": ["src/interfaces/*"],
-      "@interfaces/*": ["src/interfaces"]
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@components": [
+        "src/components"
+      ],
+      "@styles/*": [
+        "src/styles/*"
+      ],
+      "@styles": [
+        "src/styles"
+      ],
+      "@public/*": [
+        "public/*"
+      ],
+      "@public": [
+        "public"
+      ],
+      "@redux/*": [
+        "src/redux/*"
+      ],
+      "@redux": [
+        "src/redux"
+      ],
+      "@interfaces": [
+        "src/interfaces/*"
+      ],
+      "@interfaces/*": [
+        "src/interfaces"
+      ]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

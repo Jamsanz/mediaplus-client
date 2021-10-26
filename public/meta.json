@@ -3,18 +3,18 @@
   "plugins": [
     {
       "name": "Media Research",
-      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque laboriosam ullam, neque, error quia ab cupiditate odit illo obcaecati cumque consequuntur, assumenda quis vel magnam eum eos beatae iusto molestiae.",
+      "description": "We conduct all sorts of media research for we are professionals in the study and cultivation of the effects of the different mass media on social, psychological and physical aspects. We are just a call away from achieving your media research goals.",
       "url": "https://getbootstrap.com/docs/5.0/getting-started/introduction/",
       "icon": "fas fa-search"
     },
     {
       "name": "Media Campaign",
-      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque laboriosam ullam, neque, error quia ab cupiditate odit illo obcaecati cumque consequuntur, assumenda quis vel magnam eum eos beatae iusto molestiae.",
+      "description": "We help you achieve your media aim and we also help plan your media to reach its target audience and to improve the overall customer conversion rate. We are the best at what we do.",
       "url": "https://github.com/vercel/styled-jsx",
       "icon":"far fa-user"
     },
     {
-      "name": "Fetch",
+      "name": "Media Marketing",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque laboriosam ullam, neque, error quia ab cupiditate odit illo obcaecati cumque consequuntur, assumenda quis vel magnam eum eos beatae iusto molestiae.",
       "url": "https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API",
       "icon":"fas fa-briefcase"

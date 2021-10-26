@@ -13,12 +13,9 @@ import {
   GridColDef,
   GridToolbar,
   GridSelectionModel,
-  GridCellEditCommitParams, 
-  GridCellParams} from '@mui/x-data-grid';
-// import { GetStaticProps } from 'next';
-// import router from 'next/router';
+  GridCellEditCommitParams} from '@mui/x-data-grid';
 import { useEffect } from 'react';
-// import { GetStaticProps } from 'next';
+import router from 'next/router';
 
 const columns: GridColDef[] = [
 
@@ -37,10 +34,8 @@ const columns: GridColDef[] = [
 
 const Contacts: React.FC = ({contact}:any): JSX.Element => {
   const [user, setUser] =React.useState<any>();
-  const [loaded, setLoaded]= React.useState<boolean>(false);
   const [rows, setRows]=React.useState<any[]>([]);
   const [deleteData, setDeleteData]=React.useState<any[]>([]);
-  console.log(contact);
   useEffect(()=>{
     http.get('/contacts')
     .then( contact =>
@@ -78,18 +73,17 @@ const Contacts: React.FC = ({contact}:any): JSX.Element => {
   const handlePageSizeChange = (params: any) => {
     setPageSize(params.pageSize);
   };
-  useEffect(()=>{
-    setLoaded(true);
-    const t:any= window.sessionStorage.getItem('MediaUser');
-    setUser(JSON.parse(t));
-    
-},[]);
 
-// React.useEffect(()=>{
-//   if (loaded && user == null) {
-//     router.push("/admin/signIn");
-//   }
-// },[loaded, user]);
+  useEffect(()=>{
+    const t:any= window.localStorage.getItem('MediaUser');
+    setUser(JSON.parse(t));
+  },[]);
+
+  useEffect(()=>{
+    if (user === null) {
+      router.push("/admin/signIn");
+    }
+  },[user]);
 
 
   const handleOnSelectionModelChange = (selectionModel: GridSelectionModel): void => {

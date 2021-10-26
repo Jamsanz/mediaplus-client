@@ -1,27 +1,38 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
+import AOS from 'aos';
+import 'aos/dist/aos.css'
 
 const Section: React.FC = (): JSX.Element => {
+  useEffect(()=> {
+    AOS.init({
+      duration: 2000,
+      easing: 'ease-in-out',
+      once: true,
+      mirror: false
+    });
+    AOS.refresh();
+  }, []);
     return (
-      <Container>
+      <Container data-aos="zoom-out">
         <Row className="section" id="About">
             <Col md={6} xs={12} className="order-lg-2">
               <div className="text-about">
-                  <h1 className="text-center">Lorem ipsum</h1>
+                  <h1 className="text-center">About Us</h1>
                   <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Suscipit inventore recusandae tempora minima illo ipsam nulla!
-                    Error voluptas veniam maiores animi cum a repellendus, unde modi saepe consectetur reiciendis incidunt?
+                    @Media+ is a media consulting firm involved in Media Campaign, Social Media Marketing and Campaign,
+                    Advertising and PR campaign, social and media research, media training, writing of speeches,
+                    publishing, content production, Measurement and Evaluation etc...  
                   </p>
                   <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Suscipit inventore recusandae tempora minima illo ipsam nulla!
-                    Error voluptas veniam maiores animi cum a repellendus, unde modi saepe consectetur reiciendis incidunt?
+                    <strong>Vision: </strong><br />
+                    To be a world class media campaign and media research organization with penchant for
+                    excellence that will be the standard for many industries.
                   </p>
                   <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Suscipit inventore recusandae tempora minima illo ipsam nulla!
-                    Error voluptas veniam maiores animi cum a repellendus, unde modi saepe consectetur reiciendis incidunt?
+                    <strong>Mission: </strong><br />
+                    We are posistioned to carry out excellent media campaigns, research and training to the
+                    satisfaction of our teaming clients globally as their interests are our guides to optimum service delivery.
                   </p>
               </div>
             </Col>

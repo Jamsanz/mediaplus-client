@@ -9,7 +9,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { http } from 'utils/utils';
+import toastr, { http } from 'utils/utils';
 import router from 'next/router';
 
 function Copyright(props: any) {
@@ -37,10 +37,15 @@ const SignIn: React.FC = (): JSX.Element => {
     e.preventDefault();
     setLoading(!Loading);
     http.post('/login', {email, password})
-      .then((res: any)=>{
+      .then((res: any): void =>{
+        if (res.status !== 200) {
+          toastr.error(res.data.message);
+          setPassword('');
+          return;
+        }
           window.localStorage.setItem('MediaUser', JSON.stringify(res.data.data));
-          router.push('/admin');
           setLoading(!Loading);
+          router.push('/admin');
       })
       .catch(error => toastr.error(`${error}`))
   };

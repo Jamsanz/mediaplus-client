@@ -119,13 +119,6 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
         }
       })
   }
-
-  useEffect(()=>{
-    if (!(window.localStorage.getItem('MediaUser'))) {
-      router.push('/admin/signIn');
-    }
-  }, []);
-
   return (
     <>
     <Head>

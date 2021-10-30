@@ -52,5 +52,18 @@ export const DeleteAlert = () => (
     confirmButtonColor: "red",
   })
 );
+
+export const LogOut = () => (
+  Swal.fire({
+    title: "Sign Out",
+    text: "Are you sure you want to sign out?",
+    icon: "warning",
+    cancelButtonText: "CANCEL",
+    showCancelButton: true,
+    showConfirmButton: true,
+    confirmButtonText: "Sign out",
+    confirmButtonColor: "red",
+  })
+);
   
 export default toastr;

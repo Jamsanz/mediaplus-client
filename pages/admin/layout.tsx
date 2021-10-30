@@ -122,6 +122,9 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   return (
     <>
     <Head>
+      <meta property="og:title" content="@Media+ Consultancy" />
+      <meta property="og:description" content="Your number one Research and Media consult!" />
+      <meta property="og:url" content="https://mediaplus-client.vercel.app" />
     </Head>
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />

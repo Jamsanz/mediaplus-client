@@ -35,12 +35,12 @@ const SignIn: React.FC = (): JSX.Element => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(!Loading);
+    setLoading(true);
     http.post('/login', {email, password})
       .then((res: any): void =>{
         if (res.status !== 200) {
           toastr.error(res.data.message);
-          setLoading(!Loading);
+          setLoading(false);
           setPassword('');
           return;
         }
@@ -48,7 +48,11 @@ const SignIn: React.FC = (): JSX.Element => {
           setLoading(!Loading);
           router.push('/admin');
       })
-      .catch(error => toastr.error(`${error}`))
+      .catch(error =>{
+        console.log(error);
+        setPassword('');
+        setLoading(false);
+        toastr.error(`${error}`)});
   };
 
   return (

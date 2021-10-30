@@ -40,6 +40,7 @@ const SignIn: React.FC = (): JSX.Element => {
       .then((res: any): void =>{
         if (res.status !== 200) {
           toastr.error(res.data.message);
+          setLoading(!Loading);
           setPassword('');
           return;
         }

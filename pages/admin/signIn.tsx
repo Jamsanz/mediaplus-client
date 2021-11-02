@@ -49,10 +49,9 @@ const SignIn: React.FC = (): JSX.Element => {
           router.push('/admin');
       })
       .catch(error =>{
-        console.log(error);
         setPassword('');
         setLoading(false);
-        toastr.error(`${error}`)});
+        toastr.error(`Incorrect login credentials`)});
   };
 
   return (

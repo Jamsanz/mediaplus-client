@@ -38,6 +38,7 @@ export const Main: React.FC = (): JSX.Element => {
           <Image
             src="/images/postIL.png"
             alt=''
+            className="main-img"
             layout="fill"
           />
         </Col>

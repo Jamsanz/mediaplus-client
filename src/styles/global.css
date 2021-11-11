@@ -17,7 +17,44 @@ body {
   justify-content: center;
   margin-bottom: 10px;
 }
+/* .portfolio{
 
+} */
+
+/* 
+.fab{
+  position: fixed;
+  bottom: 23px;
+  right: 23px;
+  background-color: rgba(80, 78, 194, .74);
+  color: white;
+  text-align: center;
+  border-radius: 50%;
+  -webkit-tap-highlight-color: transparent;
+  border: none;
+  z-index: 999999;
+  width: 40px;
+  height: 40px;
+  box-shadow: 0 16px 24px 2px rgb(0 0 0 / 14%), 0 6px 30px 5px rgb(0 0 0 / 12%), 0 8px 10px -7px rgb(0 0 0 / 20%);
+  transition: .3s ease-out;
+  font-size: 16px;
+  transform: scale(1);
+  animation: pulse 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+} */
+/* @keyframes pulse {
+	0% {
+    box-shadow: rgb(0 0 0 / 40%);
+	}
+
+	70% {
+		transform: scale(1);
+    box-shadow: rgb(0 0 0 / 12%);
+	}
+
+	100% {
+    box-shadow: rgb(0 0 0 / 1%);
+	}
+} */
 .paper{
   padding: 10px;
   display: flex;
@@ -125,8 +162,58 @@ hr {
     padding: 15px;
   } 
 }
+
+.portfolio-card{
+  min-height: 550px;
+  overflow: hidden;
+}
+.card-img{
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+.p-ellipsis{
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.card-footer{
+  display: flex;
+  justify-content: flex-end;
+}
+.rounded-img{
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
+.modal-data{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: justify;
+  padding: 35px;
+}
+.readmore-btn{
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  color: white;
+  background-color: #6C63FF;
+}
 .p{
   text-align: justify;
+}
+#text-overflow{
+  margin-bottom: 5px;
+}
+.close-btn{
+  color: white;
+  background-color: red;
+  border: none;
+  border-radius: 5px;
+}
+.card-text{
+  margin-bottom: 10px;
 }
 .section p{
   text-align: justify

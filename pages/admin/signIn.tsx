@@ -11,6 +11,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import toastr, { http } from 'utils/utils';
 import router from 'next/router';
+import { Spinner } from 'react-bootstrap';
 
 function Copyright(props: any) {
   return (
@@ -102,8 +103,9 @@ const SignIn: React.FC = (): JSX.Element => {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              disabled={Loading}
             >
-              {Loading ? 'Signing In...' : "Sign In"}
+              {Loading ? <Spinner animation="border" /> : "Sign In"}
             </Button>
           </Box>
         </Box>

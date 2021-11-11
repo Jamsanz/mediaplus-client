@@ -9,6 +9,7 @@ import {
   FormGroup,
   InputGroup,
   Jumbotron,
+  Spinner,
   Row } from 'react-bootstrap';
 import toastr, { http} from 'utils/utils';
 import AOS from 'aos';
@@ -152,7 +153,7 @@ const ContactForm: React.FC = ():JSX.Element => {
                     variant="primary"
                     disabled={Loading}
                   >
-                    {Loading ? "Submitting...": "Submit"}
+                    {Loading ? <Spinner animation="border" /> : "Submit"}
                   </Button>
                 </FormGroup>
               </Form>

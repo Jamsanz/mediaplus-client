@@ -4,6 +4,7 @@ import { Main, Cards } from "@components";
 import Layout from "@components/layout";
 import ContactForm from "@components/contact-form";
 import Section from "@components/section";
+import Portfolio from "@components/section/portfolio";
 
 const Home: React.FC = (): JSX.Element => {
   return (
@@ -12,6 +13,7 @@ const Home: React.FC = (): JSX.Element => {
         <Main />
         <Cards />
         <Section />
+        <Portfolio />
         <ContactForm />
       </Layout>
     </div>
@@ -19,3 +21,5 @@ const Home: React.FC = (): JSX.Element => {
 };
 
 export default Home;
+
+{/* <button className="fab">+</button> */}

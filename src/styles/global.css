@@ -116,6 +116,12 @@ body {
   align-items: flex-start;
 }
 
+.place-center{
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
 .contact-input input, select{
   border: none;
   width: 88%;

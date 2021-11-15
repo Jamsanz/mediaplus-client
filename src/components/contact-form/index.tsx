@@ -67,11 +67,11 @@ const ContactForm: React.FC = ():JSX.Element => {
                 </p>
                 <p>
                   <i className="fas fa-phone mr-3"></i>
-                  08012345678
+                  +2348067986731
                 </p>
                 <p>
                   <i className="fas fa-envelope mr-3"></i>
-                  mediaP@gmail.com
+                  mediaplus1120@gmail.com
                 </p>
               </Jumbotron>
             </Col>

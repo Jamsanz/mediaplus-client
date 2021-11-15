@@ -36,9 +36,9 @@ const Section: React.FC = (): JSX.Element => {
                   </p>
               </div>
             </Col>
-            <Col md={6} xs={12} className="order-lg-1">
+            <Col md={6} xs={12} className="order-lg-1 mt-4">
               <img
-                src="/images/realtime.png"
+                src="/images/logo.jpg"
                 alt=''
                 className="section-img"
               />

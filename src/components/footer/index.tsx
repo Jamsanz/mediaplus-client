@@ -5,8 +5,7 @@ export const Footer: React.FC = () => {
   return (
     <div className="text-center py-4" style={{ backgroundColor: "#282c34" }}>
       <a
-        href="https://github.com/pankod"
-        target="_blank"
+        href="#"
         className="d-block mb-3"
       >
         <h1 className="text-white">@Media+</h1>

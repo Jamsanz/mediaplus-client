@@ -35,18 +35,12 @@ const Layout = ({children}:any): JSX.Element => {
           <title>@Media+ Consultancy | Media consultants</title>
           <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet"/>
           <link rel="icon" href="/images/mediapluslogo.png" />
-          <script type="application/ld+json">
-            {{
-              "@context": "https://www.atmediaplus-consultancy.org",
-            "@type": "WebSite",
-            "url": "https://www.atmediaplus-consultancy.org",
-              "name": "@Media+: Media Consultancy and Campaign outsource"
-        }}
-          </script>
         </Head>
         <Header />
+        <body>
         {children}
         <Footer />
+        </body>
         </>
     )
 }

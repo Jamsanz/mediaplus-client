@@ -15,7 +15,7 @@ export const Cards: React.FC = () => {
     AOS.refresh();
   }, []);
   return (
-    <div className="grey-1" id="services" data-aos="zoom-in">
+    <div className="grey-1 section-cards" id="services" data-aos="zoom-in">
       <Container className="my-5 flex-grow-1">
         <div className="services-header my-5 text-center transition">
           <h1 className="text-center">

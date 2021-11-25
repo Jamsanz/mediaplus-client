@@ -24,7 +24,7 @@ const Portfolio = (): JSX.Element => {
           {data.map((portfolio) => (
             <Col md={4} key={portfolio.name} className="mb-3">
               <Card className="border-none mi-card portfolio-card">
-              <Card.Img variant="top" className="card-img" src={portfolio.img} />
+              <Card.Img variant="top" className="card-img" src={portfolio.img} alt={portfolio.alt} />
                 <Card.Body>
                   <Card.Title>{portfolio.name}</Card.Title>
                   <Card.Text className="text-justify">
@@ -41,7 +41,7 @@ const Portfolio = (): JSX.Element => {
         <Modal show={show} onHide={() => setShow(false)}>
           {modalData && (
             <div className="modal-data">
-              <img className="rounded-img" src={modalData.img} alt="" />
+              <img className="rounded-img" src={modalData.img} alt={modalData.alt} />
               <h4 className="text-center">{modalData.name}</h4>
               <p>{modalData.description}</p>
             </div>

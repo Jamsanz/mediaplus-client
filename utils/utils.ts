@@ -80,7 +80,8 @@ export const data = [
         (NRCTWG) of the Nigeria Centre for Disease Control (NCDC). He has worked with many
         institutions on social research like the Nigeria Institute for Policy and Strategic Studies (NIPSS),
         Action Aid Nigeria, Measure Evaluation, Ministry of Health etc.`,
-        "img": "/images/ibrahim_jimoh.jpg"
+        "img": "/images/ibrahim_jimoh.jpg",
+        "alt":"@Media+ CEO"
       },
       {
         "name": "Kabiru Danladi (Partner)",
@@ -94,7 +95,8 @@ export const data = [
         Communication Education. He has worked with many institutions on social research like the
         Nigeria Broadcasting Commission, Centre for Information Technology Development, and
         participated in social media political communication trainings.`,
-        "img": "/images/2.jpg"
+        "img": "/images/2.jpg",
+        "alt":"@Media+ Managing Partner"
       },
       {
         "name": "Hashim Suleiman, PhD (Partner)",
@@ -109,7 +111,8 @@ export const data = [
         micro and macro levels of mass communication. Hashim has conducted researches and published
         outcomes of his researches in many journals, conferences and book chapters. He has also
         attended many conferences and workshops on social scientific and communication research.`,
-        "img": "/images/3.jpg"
+        "img": "/images/3.jpg",
+        "alt":"@Media+ Managing Partner"
       }
     ]
 

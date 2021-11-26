@@ -24,7 +24,7 @@ const columns: GridColDef[] = [
   {field:'phone', headerName:'Phone', type:'number', width:150, editable:false},
   {field:'service', headerName:'Service', width:150, editable:false},
   {field:'status', headerName:'Status', width:150, editable:true},
-  {field:'message', headerName:'Message', width:700, editable:false},
+  {field:'message', headerName:'Message', width:700, editable:true},
 
 ];
 

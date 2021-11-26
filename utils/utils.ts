@@ -86,7 +86,7 @@ export const data = [
       {
         "name": "Kabiru Danladi (Partner)",
         "description": `is a lecturer with the Department of Mass Communication, Ahmadu Bello
-        University, Zaria, Nigeria. He was Lawanti Primary School and Government Arts Secondary
+        University, Zaria, Nigeria. He was at Lawanti Primary School and Government Arts Secondary
         School, Gombe State. He holds B.Sc. and M.Sc. degrees in Mass Communication from the
         Ahmadu Bello University (ABU), Zaria and now at 4 th year of PhD studies at Bayero University,
         Kano (BUK) respectively. He is of Social Media stream with key interest in Activism, Social
@@ -99,7 +99,7 @@ export const data = [
         "alt":"@Media+ Managing Partner"
       },
       {
-        "name": "Hashim Suleiman, PhD (Partner)",
+        "name": "Hashim Mohammed Suleiman, PhD (Partner)",
         "description": `lectures with Mass Communication Department, Ahmadu
         Bello University, Zaria. He is a holder of B. Sc and M. Sc Mass Communication (ABU, Zaria)
         and PhD Mass Communication, Bayero University, Kano. Hashim has a decade (+) experience

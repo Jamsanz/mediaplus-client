@@ -34,6 +34,7 @@ const Section: React.FC = (): JSX.Element => {
                     We are posistioned to carry out excellent media campaigns, research and training to the
                     satisfaction of our teaming clients globally as their interests are our guides to optimum service delivery.
                   </p>
+                  <p>We are experts in crises communication, event planning, issues management relations, brand management and OPR etc.</p>
               </div>
             </Col>
             <Col md={6} xs={12} className="order-lg-1 mt-4">

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -30,29 +30,31 @@ const theme = createTheme();
 
 const SignIn: React.FC = (): JSX.Element => {
 
-    const [email, setEmail] = useState<string>('');
-    const [password, setPassword] = useState<string>('');
-    const [Loading, setLoading] = useState<boolean>(false);
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [Loading, setLoading] = useState<boolean>(false);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    http.post('/login', {email, password})
-      .then((res: any): void =>{
+    http.post('/login', { email, password })
+      .then((res: any): void => {
         if (res.status !== 200) {
           toastr.error(res.data.message);
           setLoading(false);
           setPassword('');
           return;
         }
-          window.localStorage.setItem('MediaUser', JSON.stringify(res.data.data));
-          setLoading(!Loading);
-          router.push('/admin');
+        console.log(res);
+        window.localStorage.setItem('MediaUser', JSON.stringify(res.data.data.email));
+        setLoading(!Loading);
+        router.push('/admin');
       })
-      .catch(error =>{
+      .catch(error => {
         setPassword('');
         setLoading(false);
-        toastr.error(`Incorrect login credentials`)});
+        toastr.error(`Incorrect login credentials`)
+      });
   };
 
   return (

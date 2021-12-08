@@ -45,7 +45,6 @@ const SignIn: React.FC = (): JSX.Element => {
           setPassword('');
           return;
         }
-        console.log(res);
         window.localStorage.setItem('MediaUser', JSON.stringify(res.data.data.email));
         setLoading(!Loading);
         router.push('/admin');

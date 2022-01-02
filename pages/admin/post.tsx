@@ -11,7 +11,7 @@ import toastr, { http } from 'utils/utils';
 const Post = ({ dataa }: { dataa: string }) => {
     const [data, setData] = useState<IPost>();
     const inputRef = useRef<any>(null);
-    const inputHelperText = `Select a media of type .mp4, .avi, .mkv etc`
+    const inputHelperText = `Select a media of type .mp4, .avi, .mkv, jpg, png etc`
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
         const { name, value } = e.target;

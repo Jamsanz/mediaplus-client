@@ -1,10 +1,15 @@
 import Layout from '@components/layout'
-import React from 'react'
+import React, { useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Col, Container, Row } from 'react-bootstrap'
+import { GetStaticProps } from 'next'
+import { http } from 'utils/utils'
+import { IPost } from '@components/posts'
+import PostCard from './admin/components/postCard'
 
-const Blog = () => {
+const Blog = ({ data: dataa }: { data: IPost[] }) => {
+    const data = dataa.sort((a, b) => (b as any) - (a as any));
     return (
         <Layout>
             <Container className="my-5 py-5">
@@ -17,7 +22,7 @@ const Blog = () => {
                         // width={50}
                         // height={50}
                         // layout='responsive'
-                        alt=""
+                        alt='blog banner'
                         className="blog-banner-img"
                     />
                 </section>
@@ -25,11 +30,16 @@ const Blog = () => {
                     <a>Post details</a>
                 </Link>
                 <Row>
-                    <Col md={6} sm={12}>
-                    </Col>
+                    {
+                        data && data.map((data: IPost, index) => (
+                            <Col key={index} md={6} sm={12}>
+                                <PostCard
+                                    {...data}
+                                />
+                            </Col>
+                        ))
+                    }
 
-                    <Col md={6} sm={12}>
-                    </Col>
                 </Row>
             </Container>
         </Layout>
@@ -37,3 +47,14 @@ const Blog = () => {
 }
 
 export default Blog;
+
+export const getStaticProps: GetStaticProps = async () => {
+
+    const { data }: { data: any } = await http.get('/post');
+
+    return {
+        props: {
+            data: data.Posts
+        }
+    }
+}

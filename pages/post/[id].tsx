@@ -7,11 +7,14 @@ import axios, { AxiosResponse } from 'axios';
 import Layout from '@components/layout';
 import PostCard from 'pages/admin/components/postCard';
 import { Container } from 'react-bootstrap';
+import router from 'next/router';
+// import Link from 'next/link';
 
 const BlogPost = ({ data }: { data: any }) => {
     return (
         <Layout>
             <Container className='mt-5 pt-5 justify-center'>
+                <p className='cursor' onClick={() => router.back()} role="link"> Go back </p>
                 <PostCard {...data} page="details" />
             </Container>
         </Layout>

@@ -16,7 +16,7 @@ const Blog = ({ data: dataa }: { data: IPost[] }) => {
                 <div className="blog-subheader">
                     <h1 className="blog-header-h1">Blog.</h1>
                 </div>
-                <section className='banner-img'>
+                <section className='banner-img mb-5'>
                     <img
                         src="/images/blogging.svg"
                         // width={50}
@@ -26,15 +26,13 @@ const Blog = ({ data: dataa }: { data: IPost[] }) => {
                         className="blog-banner-img"
                     />
                 </section>
-                <Link href={{ pathname: 'post/[id]', query: { id: 12345 } }}>
-                    <a>Post details</a>
-                </Link>
                 <Row>
                     {
                         data && data.map((data: IPost, index) => (
                             <Col key={index} md={6} sm={12}>
                                 <PostCard
                                     {...data}
+                                    page="blog"
                                 />
                             </Col>
                         ))

@@ -4,8 +4,9 @@ import Avatar from './avatar';
 import Date from './date';
 import Link from 'next/link';
 
-const PostCard = ({ _id, image, title, createdAt, body, authorName, authorImage }: IPost) => {
+const PostCard = ({ _id, image, title, createdAt, body, authorName, authorImage, page }: IPost) => {
     const mediaType = image?.data.substring(0, 15).includes("video");
+    const detailsPage = `my-3 media-resize shadow small`;
     return (
         <div className='ml-2 mr-4 post-card pb-4'>
             {image && mediaType &&

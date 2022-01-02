@@ -8,6 +8,7 @@ export interface IPost {
     createdAt?: string;
     updatedAt?: string;
     image?: img | null;
+    page?: 'details' | 'blog' | 'preview';
     authorName?: string;
     authorImage?: string;
 }

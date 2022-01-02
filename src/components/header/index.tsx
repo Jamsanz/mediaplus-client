@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Nav, Navbar} from "react-bootstrap";
+import { Container, Nav, Navbar } from "react-bootstrap";
 
 export const Header: React.FC = () => {
   return (
@@ -13,6 +13,7 @@ export const Header: React.FC = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
               <Nav.Link href="#home">Home</Nav.Link>
+              <Nav.Link href="/blog">Blog</Nav.Link>
               <Nav.Link href="#About">About</Nav.Link>
               <Nav.Link href="#services">Services</Nav.Link>
               <Nav.Link href="#contact">Contact Us</Nav.Link>

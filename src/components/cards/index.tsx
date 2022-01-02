@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { Row, Col, Container, Card } from "react-bootstrap";
 import data from "@public/meta.json";
+import BlogCard from '@components/cards/blogCards';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 export const Cards: React.FC = () => {
-  useEffect(()=>{
+  useEffect(() => {
     AOS.init({
       duration: 1000,
       easing: 'ease-in-out',
@@ -32,12 +33,17 @@ export const Cards: React.FC = () => {
                   <Card.Title className="text-center indigo-text">
                     <h1><i className={plugin.icon}></i></h1>
                     {plugin.name}
-                    </Card.Title>
+                  </Card.Title>
                   <Card.Text className="p">{plugin.description}</Card.Text>
                 </Card.Body>
               </Card>
             </Col>
           ))}
+        </Row>
+        <Row className="space-between">
+          <BlogCard />
+          <BlogCard />
+          <BlogCard />
         </Row>
       </Container>
     </div>

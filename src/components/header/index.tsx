@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 
@@ -12,11 +13,11 @@ export const Header: React.FC = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="/blog">Blog</Nav.Link>
-              <Nav.Link href="#About">About</Nav.Link>
-              <Nav.Link href="#services">Services</Nav.Link>
-              <Nav.Link href="#contact">Contact Us</Nav.Link>
+              <Link href="/#home"><a className="text-black mmy-3 mx-3">Home</a></Link>
+              <Link href="/blog"><a className="text-black mmy-3 mx-3">Blog</a></Link>
+              <Link href="/#About"><a className="text-black mmy-3 mx-3">About</a></Link>
+              <Link href="/#services"><a className="text-black mmy-3 mx-3">Services</a></Link>
+              <Link href="/#contact"><a className="text-black mmy-3 mx-3">Contact Us</a></Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

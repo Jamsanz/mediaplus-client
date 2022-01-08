@@ -1,4 +1,6 @@
 
+import IResource from "./IResource";
+import IAuthor from "./IAuthor";
 import { img } from "./IMedia";
 
 export interface IPost {
@@ -7,8 +9,8 @@ export interface IPost {
     body?: string;
     createdAt?: string;
     updatedAt?: string;
+    resource?: IResource;
     image?: img | null;
     page?: 'details' | 'blog' | 'preview';
-    authorName?: string;
-    authorImage?: string;
+    author?: IAuthor
 }

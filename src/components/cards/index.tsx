@@ -40,11 +40,11 @@ export const Cards: React.FC = () => {
             </Col>
           ))}
         </Row>
-        <Row className="space-between">
+        {/* <Row className="space-between">
           <BlogCard />
           <BlogCard />
           <BlogCard />
-        </Row>
+        </Row> */}
       </Container>
     </div>
   );

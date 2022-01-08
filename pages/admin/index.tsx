@@ -6,27 +6,14 @@ import router from 'next/router'
 import { Spinner } from 'react-bootstrap'
 
 const Home: React.FC = (): JSX.Element => {
-  const [loaded, setLoaded] = useState<boolean>(false);
-  useEffect(()=>{
-    if (!(window.localStorage.getItem('MediaUser'))) {
-      router.push('/admin/signIn');
-    }else{
-      setLoaded(true);
-    }
-  }, []);
 
-    return (
-        loaded ? 
-        <AdminLayout>
-          <Paper>
-            <Contacts />
-          </Paper>
-        </AdminLayout> 
-        : 
-        <div className="place-center">
-          <Spinner animation="border" variant="primary"/>
-        </div>
-    )
+  return (
+    <AdminLayout>
+      <Paper>
+        <Contacts />
+      </Paper>
+    </AdminLayout>
+  )
 }
 
 export default Home

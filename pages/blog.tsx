@@ -18,7 +18,7 @@ const Blog = ({ data: dataa }: { data: IPost[] }) => {
                 </div>
                 <section className='banner-img mb-5'>
                     <img
-                        src="/images/blogging.svg"
+                        src="/images/sync.svg"
                         // width={50}
                         // height={50}
                         // layout='responsive'
@@ -26,19 +26,21 @@ const Blog = ({ data: dataa }: { data: IPost[] }) => {
                         className="blog-banner-img"
                     />
                 </section>
-                <Row>
-                    {
-                        data && data.map((data: IPost, index) => (
-                            <Col key={index} md={6} sm={12}>
-                                <PostCard
-                                    {...data}
-                                    page="blog"
-                                />
-                            </Col>
-                        ))
-                    }
+                <section className="mt-5 pt-5">
+                    <Row>
+                        {
+                            data && data.map((data: IPost, index) => (
+                                <Col key={index} md={6} sm={12}>
+                                    <PostCard
+                                        {...data}
+                                        page="blog"
+                                    />
+                                </Col>
+                            ))
+                        }
 
-                </Row>
+                    </Row>
+                </section>
             </Container>
         </Layout>
     )

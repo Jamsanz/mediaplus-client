@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Col, Container, Row } from 'react-bootstrap'
-import { GetServerSideProps } from 'next'
+import { GetStaticProps } from 'next'
 import { http } from 'utils/utils'
 import { IPost } from '@components/posts'
 import PostCard from '../src/components/postCard'
@@ -48,13 +48,14 @@ const Blog = ({ data: dataa }: { data: IPost[] }) => {
 
 export default Blog;
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
 
     const { data }: { data: any } = await http.get('/post');
 
     return {
         props: {
             data: data.Posts
-        }
+        },
+        revalidate: 10
     }
 }

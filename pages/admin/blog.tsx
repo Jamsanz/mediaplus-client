@@ -26,7 +26,7 @@ const Blog = () => {
                     .then(({ data: dataaa, status }) => {
                         if (status === 200) {
                             toastr.success('successfully deleted');
-                            setData(data.filter((item: IPost) => item._id !== dataa._id));
+                            setData(data.Posts.filter((item: IPost) => item._id !== dataa._id));
                             return;
                         }
                         toastr.error((dataaa as any).message)
@@ -91,7 +91,6 @@ const Blog = () => {
                         <Spinner animation="border" variant="primary">
                             Loading...
                         </Spinner>
-
                     </div>
                 }
             </Paper>

@@ -6,14 +6,14 @@ import Layout from '../../src/components/adminLayout';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import toastr, { DeleteAlert, http } from 'utils/utils';
-import { GetServerSideProps } from 'next';
+import { GetServerSideProps, GetStaticProps } from 'next';
 import { IPost } from '../../src/interfaces/IPosts';
 import { addPost } from '@redux/slices/post';
 import router from 'next/router';
 import { blue, red, teal } from '@mui/material/colors';
 
-const Blog = () => {
-    const [data, setData] = useState<any>();
+const Blog = ({ data: dataa }: { data: any }) => {
+    const [data, setData] = useState<any>(dataa);
     const dispatch = useDispatch();
     const handleEdit = (data: IPost): void => {
         dispatch(addPost(data));
@@ -34,12 +34,12 @@ const Blog = () => {
             }
         });
     };
-    useEffect(() => {
-        http.get('/post')
-            .then(res => setData(res.data))
-            .then(() => console.log(data))
-            .catch(e => console.error(e));
-    }, []);
+    // useEffect(() => {
+    //     http.get('/post')
+    //         .then(res => setData(res.data))
+    //         .then(() => console.log(data))
+    //         .catch(e => console.error(e));
+    // }, []);
     let i = 1;
     return (
         <Layout>
@@ -101,11 +101,12 @@ const Blog = () => {
 
 export default Blog;
 
-// export const getServerSideProps: GetServerSideProps = async (ctx) => {
-//     const { data, status } = await http.get('/post');
-//     return {
-//         props: {
-//             data: (data as any)
-//         }
-//     }
-// }
+export const getStaticProps: GetStaticProps = async (ctx) => {
+    const { data, status } = await http.get('/post');
+    return {
+        props: {
+            data: (data as any)
+        },
+        revalidate: 1,
+    }
+}

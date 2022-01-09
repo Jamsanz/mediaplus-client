@@ -1,5 +1,5 @@
 import Layout from '@components/layout'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Col, Container, Row } from 'react-bootstrap'
@@ -9,7 +9,14 @@ import { IPost } from '@components/posts'
 import PostCard from '../src/components/postCard'
 
 const Blog = ({ data: dataa }: { data: IPost[] }) => {
-    const data = dataa.sort((a, b) => (b as any) - (a as any));
+    const [data, setData] = useState<IPost[]>(dataa);
+
+    useEffect(() => {
+        http.get('/post')
+            .then((res: any) => setData(res.data.Posts))
+            .catch(e => console.error(e));
+    }, []);
+
     return (
         <Layout>
             <Container className="my-5 py-5">

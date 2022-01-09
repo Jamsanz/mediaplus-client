@@ -34,12 +34,12 @@ const Blog = ({ data: dataa }: { data: any }) => {
             }
         });
     };
-    // useEffect(() => {
-    //     http.get('/post')
-    //         .then(res => setData(res.data))
-    //         .then(() => console.log(data))
-    //         .catch(e => console.error(e));
-    // }, []);
+    useEffect(() => {
+        http.get('/post')
+            .then(res => setData(res.data))
+            .then(() => console.log(data))
+            .catch(e => console.error(e));
+    }, []);
     let i = 1;
     return (
         <Layout>

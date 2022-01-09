@@ -1,7 +1,7 @@
 import { Paper, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { Table } from 'react-bootstrap';
+import { Spinner, Table } from 'react-bootstrap';
 import Layout from '../../src/components/adminLayout';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -12,8 +12,8 @@ import { addPost } from '@redux/slices/post';
 import router from 'next/router';
 import { blue, red, teal } from '@mui/material/colors';
 
-const Blog = ({ data: dataa }: any) => {
-    const [data, setData] = useState<any>(dataa);
+const Blog = () => {
+    const [data, setData] = useState<any>();
     const dispatch = useDispatch();
     const handleEdit = (data: IPost): void => {
         dispatch(addPost(data));
@@ -33,13 +33,19 @@ const Blog = ({ data: dataa }: any) => {
                     }).catch((e: any) => toastr.error(e));
             }
         });
-    }
+    };
+    useEffect(() => {
+        http.get('/post')
+            .then(res => setData(res.data))
+            .then(() => console.log(data))
+            .catch(e => console.error(e));
+    }, []);
     let i = 1;
     return (
         <Layout>
             <Paper className='center-table p-3'>
-                {/* <Typography component="h2" variant="h6" color="primary" gutterBottom>Blog Posts</Typography> */}
-                <Table
+
+                {data ? <Table
                     borderless
                     hover
                     responsive
@@ -56,7 +62,7 @@ const Blog = ({ data: dataa }: any) => {
                     </thead>
                     <tbody>
                         {
-                            data.Posts.map((data: IPost) => (
+                            data && data.Posts.map((data: IPost) => (
                                 <tr>
                                     <th scope='row'>{i++}</th>
                                     <td>{data.title}</td>
@@ -80,7 +86,14 @@ const Blog = ({ data: dataa }: any) => {
                             ))
                         }
                     </tbody>
-                </Table>
+                </Table> :
+                    <div className="place-center">
+                        <Spinner animation="border" variant="primary">
+                            Loading...
+                        </Spinner>
+
+                    </div>
+                }
             </Paper>
         </Layout>
     )
@@ -88,11 +101,11 @@ const Blog = ({ data: dataa }: any) => {
 
 export default Blog;
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-    const { data, status } = await http.get('/post');
-    return {
-        props: {
-            data: (data as any)
-        }
-    }
-}
+// export const getServerSideProps: GetServerSideProps = async (ctx) => {
+//     const { data, status } = await http.get('/post');
+//     return {
+//         props: {
+//             data: (data as any)
+//         }
+//     }
+// }

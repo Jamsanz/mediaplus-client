@@ -31,7 +31,6 @@ const PostCard = ({ _id, image, title, createdAt, body, author, page, resource }
             {title && <Link href={_id ? `/post/${_id}` : `#`}><a className='title-link mt-3 text-justify'>{title}</a></Link>}
             {createdAt && <Date dateString={createdAt} />}
             {body && <p className={page == 'blog' ? 'text-justify mb-3 mt-3 text-ellipsis' : 'text-justify mb-3 mt-3'}>{body}</p>}
-            {page === 'blog' && <Button onClick={(e) => _id ? router.push(`/post/${_id}`) : e.preventDefault()}>Read More</Button>}
             {page !== 'blog' && resource &&
                 <div
                     className='mb-3 flex justify-end'
@@ -46,6 +45,7 @@ const PostCard = ({ _id, image, title, createdAt, body, author, page, resource }
                     </a>
                 </div>}
             {author && <Avatar authorName={author.name} authorImage={author.image} />}
+            {page === 'blog' && <Button onClick={(e) => _id ? router.push(`/post/${_id}`) : e.preventDefault()}>Read More</Button>}
         </div>
 
     )

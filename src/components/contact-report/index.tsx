@@ -76,7 +76,12 @@ const Contacts: React.FC = ({ contact }: any): JSX.Element => {
   const handleOnSelectionModelChange = (selectionModel: GridSelectionModel): void => {
     setDeleteData(selectionModel);
     setId(selectionModel[0] as string);
-    setView(!view);
+    if (selectionModel.length === 1) {
+      setView(!view);
+    } else {
+      setView(false);
+    }
+
   }
 
   const handleDetails = (): void => {

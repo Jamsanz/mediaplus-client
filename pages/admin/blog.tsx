@@ -26,7 +26,7 @@ const Blog = () => {
                     .then(({ data: dataaa, status }) => {
                         if (status === 200) {
                             toastr.success('successfully deleted');
-                            setData(data.Posts.filter((item: IPost) => item._id !== dataa._id));
+                            setData(data.filter((item: IPost) => item._id !== dataa._id));
                             return;
                         }
                         toastr.error((dataaa as any).message)
@@ -36,7 +36,7 @@ const Blog = () => {
     };
     useEffect(() => {
         http.get('/post')
-            .then(res => setData(res.data))
+            .then((res: any) => setData(res.data.Posts))
             .then(() => console.log(data))
             .catch(e => console.error(e));
     }, []);
@@ -62,7 +62,7 @@ const Blog = () => {
                     </thead>
                     <tbody>
                         {
-                            data && data.Posts.map((data: IPost) => (
+                            data && data.map((data: IPost) => (
                                 <tr>
                                     <th scope='row'>{i++}</th>
                                     <td>{data.title}</td>

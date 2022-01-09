@@ -12,8 +12,8 @@ import { addPost } from '@redux/slices/post';
 import router from 'next/router';
 import { blue, red, teal } from '@mui/material/colors';
 
-const Blog = ({ data: dataa }: { data: any }) => {
-    const [data, setData] = useState<any>(dataa);
+const Blog = () => {
+    const [data, setData] = useState<any>();
     const dispatch = useDispatch();
     const handleEdit = (data: IPost): void => {
         dispatch(addPost(data));
@@ -101,12 +101,12 @@ const Blog = ({ data: dataa }: { data: any }) => {
 
 export default Blog;
 
-export const getStaticProps: GetStaticProps = async (ctx) => {
-    const { data, status } = await http.get('/post');
-    return {
-        props: {
-            data: (data as any)
-        },
-        revalidate: 1,
-    }
-}
+// export const getStaticProps: GetStaticProps = async (ctx) => {
+//     const { data, status } = await http.get('/post');
+//     return {
+//         props: {
+//             data: (data as any)
+//         },
+//         revalidate: 1,
+//     }
+// }

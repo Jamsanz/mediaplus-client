@@ -2,7 +2,7 @@ import Layout from '@components/layout'
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Col, Container, Row } from 'react-bootstrap'
+import { Col, Container, Row, Spinner } from 'react-bootstrap'
 import { GetStaticProps } from 'next'
 import { http } from 'utils/utils'
 import { IPost } from '@components/posts'
@@ -34,19 +34,27 @@ const Blog = ({ data: dataa }: { data: IPost[] }) => {
                     />
                 </section>
                 <section className="mt-5 pt-5">
-                    <Row>
-                        {
-                            data && data.map((data: IPost, index) => (
-                                <Col key={index} md={6} sm={12}>
-                                    <PostCard
-                                        {...data}
-                                        page="blog"
-                                    />
-                                </Col>
-                            ))
-                        }
+                    {data ?
+                        <Row>
+                            {
+                                data && data.map((data: IPost, index) => (
+                                    <Col key={index} md={6} sm={12}>
+                                        <PostCard
+                                            {...data}
+                                            page="blog"
+                                        />
+                                    </Col>
+                                ))
+                            }
 
-                    </Row>
+                        </Row>
+                        :
+                        <div className="place-center">
+                            <Spinner animation="border" variant="primary">
+                                Loading...
+                            </Spinner>
+                        </div>
+                    }
                 </section>
             </Container>
         </Layout>

@@ -8,8 +8,8 @@ import { http } from 'utils/utils'
 import { IPost } from '@components/posts'
 import PostCard from '../src/components/postCard'
 
-const Blog = ({ data: dataa }: { data: IPost[] }) => {
-    const [data, setData] = useState<IPost[]>(dataa);
+const Blog = () => {
+    const [data, setData] = useState<IPost[]>();
 
     useEffect(() => {
         http.get('/post')
@@ -62,15 +62,3 @@ const Blog = ({ data: dataa }: { data: IPost[] }) => {
 }
 
 export default Blog;
-
-export const getStaticProps: GetStaticProps = async () => {
-
-    const { data }: { data: any } = await http.get('/post');
-
-    return {
-        props: {
-            data: data.Posts
-        },
-        revalidate: 10
-    }
-}

@@ -12,7 +12,7 @@ const PostCard = ({ _id, image, title, createdAt, body, author, page, resource }
     const detailsPage = `my-3 media-resize shadow small`;
     const previewPage = `my-3 media-resize shadow small`;
     return (
-        <div className='ml-2 mr-4 post-card pb-4'>
+        <div className='ml-2 my-3 mr-4 post-card pb-4'>
             {image && mediaType &&
                 <video
                     src={image?.data}
@@ -44,8 +44,12 @@ const PostCard = ({ _id, image, title, createdAt, body, author, page, resource }
                         <PictureAsPdf color="error" /> Click here to download resource
                     </a>
                 </div>}
-            {author && <Avatar authorName={author.name} authorImage={author.image} />}
-            {page === 'blog' && <Button onClick={(e) => _id ? router.push(`/post/${_id}`) : e.preventDefault()}>Read More</Button>}
+            <div className='flex justfiy-space-between'>
+                {author && <Avatar authorName={author.name} authorImage={author.image} />}
+                {page === 'blog' &&
+                    <Button className='ml-auto' onClick={(e) => _id ? router.push(`/post/${_id}`) : e.preventDefault()}>Read More</Button>
+                }
+            </div>
         </div>
 
     )

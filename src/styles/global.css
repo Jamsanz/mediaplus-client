@@ -266,6 +266,15 @@ input[type="datetime-local"]:focus {
   border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
 
+.border-1 {
+  /* border: 1px solid #e5e5e5; */
+  padding: 15px;
+  /* background: #e5e5e5; */
+  box-shadow: 20px 20px 60px #c3c3c3,
+    -20px -20px 60px #ffffff;
+  border-radius: 5px;
+}
+
 /* Blog cards end */
 .paper {
   padding: 10px;

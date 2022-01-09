@@ -2,19 +2,18 @@ import React, { ChangeEvent, FormEvent, MouseEvent, useEffect, useRef, useState 
 import { Paper, TextField } from '@mui/material';
 import { IPost } from '../../src/interfaces/IPosts';
 import { GetStaticProps } from 'next';
-import Layout from './layout';
-import axios from 'axios';
-import PostCard from './components/postCard';
-import { Button } from 'react-bootstrap';
+import Layout from '../../src/components/adminLayout';
+import PostCard from '../../src/components/postCard';
+import { Button, Spinner } from 'react-bootstrap';
 import toastr, { http } from 'utils/utils';
 import { useSelector } from 'react-redux';
 import { postSelector } from '@redux/slices/post';
-import router from 'next/router';
 import IAuthor from '../../src/interfaces/IAuthor';
 
 const Post = ({ dataa }: { dataa: string }) => {
     const [data, setData] = useState<IPost>();
     const [updateNotPost, setUpdateNotPost] = useState<boolean>(false);
+    const [loading, setLoading] = useState<boolean>(false);
     const inputRef = useRef<any>(null);
     const inputHelperText = `Select a media of type .mp4, .avi, .mkv, jpg, png etc`;
 
@@ -57,36 +56,46 @@ const Post = ({ dataa }: { dataa: string }) => {
 
     const handleSubmit = async (e: FormEvent): Promise<void> => {
         e.preventDefault();
+        setLoading(true);
         const { data: response, status } = await http.post('/post', data);
         if (status === 201) {
             toastr.success(`${(response as any).data.title} successfully created`);
             setData(undefined);
+            setLoading(false);
             inputRef.current.click();
             return;
         }
 
         if (status === 413) {
             toastr.error('Video too large');
+            setLoading(false);
             return;
         }
 
         toastr.error(`Something went wrong`);
         setData(undefined);
+        setLoading(false);
         inputRef.current.click();
     };
 
     const handleUpdate = async (e: FormEvent): Promise<void> => {
         e.preventDefault();
+        setLoading(true);
         const { data: response, status } = await http.put(`/post/${post._id}`, data);
         if (status === 200) {
             toastr.success(`${data!.title} successfully updated`);
+            setLoading(false);
             return;
         }
 
         if (status === 413) {
             toastr.error('Video too large');
+            setLoading(false);
             return;
         }
+
+        toastr.error(`Something went wrong`);
+        setLoading(false);
 
     };
 
@@ -159,8 +168,8 @@ const Post = ({ dataa }: { dataa: string }) => {
                                     helperText={<span>Select author's image</span>}
                                 />
                             </div>
-                            <Button type='submit'>
-                                {!!post._id ? 'Update' : 'Post'}
+                            <Button type='submit' disabled={loading}>
+                                {loading ? <Spinner animation="border" /> : !!post._id ? 'Update' : 'Post'}
                             </Button>
                             {!!!post._id &&
                                 <Button

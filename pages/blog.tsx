@@ -6,7 +6,7 @@ import { Col, Container, Row } from 'react-bootstrap'
 import { GetStaticProps } from 'next'
 import { http } from 'utils/utils'
 import { IPost } from '@components/posts'
-import PostCard from './admin/components/postCard'
+import PostCard from '../src/components/postCard'
 
 const Blog = ({ data: dataa }: { data: IPost[] }) => {
     const data = dataa.sort((a, b) => (b as any) - (a as any));

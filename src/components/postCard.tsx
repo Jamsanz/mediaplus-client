@@ -1,4 +1,4 @@
-import { IPost } from '../../../src/interfaces/IPosts';
+import { IPost } from '../interfaces/IPosts';
 import React, { useEffect, useState } from 'react';
 import Avatar from './avatar';
 import Date from './date';

@@ -1,7 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import React, { ChangeEvent, FormEvent, useState } from 'react'
 import { http } from 'utils/utils';
-import { useRouter } from 'next/router';
 import { IUser } from '../../../src/interfaces/IUser';
 import {
   Button,
@@ -9,11 +8,9 @@ import {
   FormControl,
   FormGroup,
   InputGroup,
-  Spinner,
-  Row
 } from 'react-bootstrap';
 import axios, { AxiosResponse } from 'axios';
-import Layout from '../layout';
+import Layout from '../../../src/components/adminLayout';
 import router from 'next/router';
 import { Paper } from '@mui/material';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';

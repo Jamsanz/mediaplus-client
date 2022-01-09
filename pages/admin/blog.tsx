@@ -2,7 +2,7 @@ import { Paper, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { Table } from 'react-bootstrap';
-import Layout from './layout';
+import Layout from '../../src/components/adminLayout';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import toastr, { DeleteAlert, http } from 'utils/utils';

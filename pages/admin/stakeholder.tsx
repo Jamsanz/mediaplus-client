@@ -7,27 +7,29 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import toastr, { DeleteAlert, http } from "utils/utils";
 import { GetServerSideProps, GetStaticProps } from "next";
-import { IPost } from "../../src/interfaces/IPosts";
-import { addPost } from "@redux/slices/post";
+import { IStakeholder } from "../../src/interfaces/IStakeholder";
+import { addStakeholder } from "@redux/slices/stakeholder";
 import router from "next/router";
 import { blue, red, teal } from "@mui/material/colors";
 
-const Blog = () => {
+const Stakeholder = () => {
   const [data, setData] = useState<any>();
   const dispatch = useDispatch();
-  const handleEdit = (data: IPost): void => {
-    dispatch(addPost(data));
-    router.push("/admin/post");
+  const handleEdit = (data: IStakeholder): void => {
+    dispatch(addStakeholder(data));
+    router.push("/admin/postStakeholder");
   };
-  const handleDelete = (dataa: IPost): void => {
+  const handleDelete = (dataa: IStakeholder): void => {
     DeleteAlert().then((result) => {
       if (result.isConfirmed) {
         http
-          .delete(`/post/${dataa._id}`)
+          .delete(`stakeholder/${dataa._id}`)
           .then(({ data: dataaa, status }) => {
             if (status === 200) {
               toastr.success("successfully deleted");
-              setData(data.filter((item: IPost) => item._id !== dataa._id));
+              setData(
+                data.filter((item: IStakeholder) => item._id !== dataa._id)
+              );
               return;
             }
             toastr.error((dataaa as any).message);
@@ -38,8 +40,8 @@ const Blog = () => {
   };
   useEffect(() => {
     http
-      .get("/post")
-      .then((res: any) => setData(res.data.Posts))
+      .get("/stakeholder")
+      .then((res: any) => setData(res.data.data))
       .then(() => console.log(data))
       .catch((e) => console.error(e));
   }, []);
@@ -52,20 +54,20 @@ const Blog = () => {
             <thead>
               <tr className="head">
                 <th>S/N</th>
-                <th>Title</th>
-                <th>Body</th>
-                <th>Author</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Created At</th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
               {data &&
-                data.map((data: IPost) => (
+                data.map((data: IStakeholder) => (
                   <tr>
                     <th scope="row">{i++}</th>
-                    <td>{data.title}</td>
-                    <td className="ellipsis">{data.body}</td>
-                    <td>{data?.author?.name}</td>
+                    <td>{data.name}</td>
+                    <td className="ellipsis">{data.description}</td>
+                    <td>{new Date(data.createdAt!).toLocaleDateString()}</td>
                     <td>
                       <EditIcon
                         color="primary"
@@ -99,10 +101,10 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export default Stakeholder;
 
 // export const getStaticProps: GetStaticProps = async (ctx) => {
-//     const { data, status } = await http.get('/post');
+//     const { data, status } = await http.get('/Stakeholder');
 //     return {
 //         props: {
 //             data: (data as any)

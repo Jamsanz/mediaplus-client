@@ -18,6 +18,8 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import BookIcon from '@mui/icons-material/Book';
 import PostAddIcon from '@mui/icons-material/PostAdd';
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import PeopleIcon from "@mui/icons-material/People";
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import router from 'next/router';
@@ -190,6 +192,18 @@ const AdminLayout: React.FC = ({ children }: any): JSX.Element => {
                   <PostAddIcon />
                 </ListItemIcon>
                 <ListItemText primary="Create Post" />
+              </ListItem>
+              <ListItem button onClick={() => router.push('/admin/stakeholder')}>
+                <ListItemIcon>
+                  <PeopleIcon />
+                </ListItemIcon>
+                <ListItemText primary="Stakeholders" />
+              </ListItem>
+              <ListItem button onClick={() => router.push('/admin/postStakeholder')}>
+                <ListItemIcon>
+                  <PersonAddIcon />
+                </ListItemIcon>
+                <ListItemText primary="Add Stakeholder" />
               </ListItem>
             </List>
           </Drawer>

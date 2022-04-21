@@ -12,5 +12,6 @@ export interface IPost {
     resource?: IResource;
     image?: img | null;
     page?: 'details' | 'blog' | 'preview';
-    author?: IAuthor
+    author?: IAuthor,
+    loading?: boolean
 }

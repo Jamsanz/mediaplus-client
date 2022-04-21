@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
-import { Col, Container, Row } from 'react-bootstrap'
+import React, { useEffect } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
 import AOS from 'aos';
-import 'aos/dist/aos.css'
+import 'aos/dist/aos.css';
 
 
 const Section: React.FC = (): JSX.Element => {
@@ -21,8 +21,10 @@ const Section: React.FC = (): JSX.Element => {
           <div className="text-about">
             <h1 className="text-center">About Us</h1>
             <p>
-              @Media+ is a media consulting firm involved in Media Campaign, Social Media Marketing and Campaign,
-              Advertising and PR campaign, social and media research, media training, writing of speeches,
+              @Media+ is a media consulting firm involved in Media Campaign,
+              Social Media Marketing and Campaign,
+              Advertising and PR campaign, social and media research, media training, 
+              writing of speeches,
               publishing, content production, Measurement and Evaluation etc...
             </p>
             <p>
@@ -32,10 +34,13 @@ const Section: React.FC = (): JSX.Element => {
             </p>
             <p>
               <strong>Mission: </strong><br />
-              We are posistioned to carry out excellent media campaigns, research and training to the
-              satisfaction of our teaming clients globally as their interests are our guides to optimum service delivery.
+              We are posistioned to carry out excellent media campaigns,
+              research and training to the satisfaction of our teaming clients
+              globally as their interests are our guides to optimum service delivery.
             </p>
-            <p>We are experts in crises communication, event planning, issues management relations, brand management and OPR etc.</p>
+            <p>
+              We are experts in crises communication, event planning, issues management
+              relations, brand management and OPR etc.</p>
           </div>
         </Col>
         <Col md={6} xs={12} className="order-lg-1 mt-4">
@@ -47,7 +52,7 @@ const Section: React.FC = (): JSX.Element => {
         </Col>
       </Row>
     </Container>
-  )
-}
+  );
+};
 
-export default Section
+export default Section;

@@ -1,36 +1,41 @@
-import { GetStaticPaths, GetStaticProps } from 'next';
-import React, { ChangeEvent, FormEvent, useState } from 'react'
-import { http } from 'utils/utils';
-import { IUser } from '../../../src/interfaces/IUser';
+import { GetStaticPaths, GetStaticProps } from "next";
+import React, { ChangeEvent, FormEvent, useState } from "react";
+import { http } from "utils/utils";
+import { IUser } from "../../../src/interfaces/IUser";
 import {
   Button,
   Form,
   FormControl,
   FormGroup,
   InputGroup,
-} from 'react-bootstrap';
-import axios, { AxiosResponse } from 'axios';
-import Layout from '../../../src/components/adminLayout';
-import router from 'next/router';
-import { Paper } from '@mui/material';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+} from "react-bootstrap";
+import axios, { AxiosResponse } from "axios";
+import Layout from "../../../src/components/adminLayout";
+import router from "next/router";
+import { Paper } from "@mui/material";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 // import Link from 'next/link';
 
 const Details = ({ data }: { data: IUser }) => {
   const [user, setUser] = useState<IUser>(data);
   const [Loading, setLoading] = useState<boolean>(false);
 
-  const handleChange = (e: ChangeEvent): void => {
+  // eslint-disable-next-line no-empty-function
+  const handleChange = (e: ChangeEvent): void => {};
 
-  }
-
-  const handleSubmit = (e: FormEvent): void => {
-
-  }
+  // eslint-disable-next-line no-empty-function
+  const handleSubmit = (e: FormEvent): void => {};
   return (
     <Layout>
       <Paper className="p-3">
-        <Button className='cursor mb-3' onClick={() => router.back()} role="link"> <ChevronLeftIcon /> Go back </Button>
+        <Button
+          className="cursor mb-3"
+          onClick={() => router.back()}
+          role="link"
+        >
+          {" "}
+          <ChevronLeftIcon /> Go back{" "}
+        </Button>
         <Form role="form" onSubmit={handleSubmit}>
           <div className="contact-input">
             <i className="fas fa-user"></i>
@@ -129,26 +134,27 @@ const Details = ({ data }: { data: IUser }) => {
         </Form>
       </Paper>
     </Layout>
-  )
-}
+  );
+};
 
 export default Details;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { data }: AxiosResponse = await http.get('/contacts');
-  const paths = (data as any).contacts.map((user: IUser) => { return { params: { id: user._id } } });
+  const { data }: AxiosResponse = await http.get("/contacts");
+  const paths = (data as any).contacts.map((user: IUser) => {
+    return { params: { id: user._id } };
+  });
   return {
     paths,
     fallback: false,
-  }
-
-}
+  };
+};
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { data }: AxiosResponse = await http.get(`/contacts/${params?.id}`)
+  const { data }: AxiosResponse = await http.get(`/contacts/${params?.id}`);
   return {
     props: {
-      data: (data as any).data
-    }
-  }
-}
+      data: (data as any).data,
+    },
+  };
+};

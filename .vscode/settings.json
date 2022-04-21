@@ -3,5 +3,7 @@
     "emmet.includeLanguages": {
         "vue-html": "html",
         "javascript": "javascriptreact"
-    }
+    },
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true
 }

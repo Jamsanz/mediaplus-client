@@ -49,4 +49,4 @@ const Layout = ({ children }: any): JSX.Element => {
   )
 }
 
-export default Layout
+export default Layout;

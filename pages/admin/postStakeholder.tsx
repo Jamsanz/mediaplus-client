@@ -8,99 +8,70 @@ import React, {
   useState,
 } from "react";
 import { Paper, TextField } from "@mui/material";
-import { IPost } from "../../src/interfaces/IPosts";
+import { IStakeholder } from "../../src/interfaces/IStakeholder";
 import { GetStaticProps } from "next";
 import Layout from "../../src/components/adminLayout";
-import PostCard from "../../src/components/postCard";
-import { Button, Spinner } from "react-bootstrap";
+import { Button, Card, Spinner } from "react-bootstrap";
 import toastr, { http } from "utils/utils";
 import { useSelector } from "react-redux";
-import { postSelector } from "@redux/slices/post";
-import IAuthor from "../../src/interfaces/IAuthor";
+import { stakeholderSelector } from "@redux/slices/stakeholder";
 import axios from "axios";
 
-const Post = ({ dataa }: { dataa: string }) => {
-  const [data, setData] = useState<IPost>();
-  const [updateNotPost, setUpdateNotPost] = useState<boolean>(false);
+const stakeholder = () => {
+  const [data, setData] = useState<IStakeholder>();
+  const [updateNotstakeholder, setUpdateNotstakeholder] =
+    useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
-  const [fileLoading, setFileLoading] = useState<boolean>(false);
   const inputRef = useRef<any>(null);
-  const inputHelperText = `Select a media of type .mp4, .avi, .mkv, jpg, png etc`;
+  const inputHelperText = `Select an image type .mkv, jpg, png etc`;
 
-  const post = useSelector(postSelector);
+  const stakeholder = useSelector(stakeholderSelector);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ): void => {
     const { name, value } = e.target;
-    let author: IAuthor;
-    if (name === "author") {
-      author = { ...data?.author, name: value };
-      setData({ ...data, author });
-      return;
-    }
-    setData({ ...data, [name]: value } as IPost);
+    setData({ ...data, [name]: value } as IStakeholder);
     console.log(data);
   };
 
   const handleFileUpload = (e: ChangeEvent<HTMLInputElement>): void => {
-    const { files, name } = e.target;
+    setLoading(true);
+    const { files } = e.target;
     const file = files && files[0];
     const formData = new FormData();
-    setFileLoading(true);
     formData.append("file", file!);
     formData.append("upload_preset", process.env.UPLOAD_PRESET!);
+    // TODO: change cloudname to opgan and update upload preset
     axios
       .post(
         `https://api.cloudinary.com/v1_1/${process.env.CLOUD_NAME}/upload`,
         formData
       )
       .then((res: any) => {
+        setData({ ...data, image: res.data.secure_url });
         setLoading(false);
-        if (name === "image") {
-          files &&
-            setData({
-              ...data,
-              image: {
-                data: res.data.secure_url,
-                type: file?.type,
-                fileName: file?.name,
-              },
-            } as IPost);
-        } else if (name === "authorImage") {
-          files &&
-            setData({
-              ...data,
-              author: { ...data?.author, image: res.data.secure_url },
-            } as IPost);
-        } else {
-          files &&
-            setData({
-              ...data,
-              resource: { name: file?.name, data: res.data.secure_url },
-            } as IPost);
-        }
       })
       .catch((err) => {
         setLoading(false);
         console.error("Error:", err);
-      })
-      .finally(() => {
-        setFileLoading(false);
       });
   };
 
   const handleDelete = (e: MouseEvent) => {
     e.preventDefault();
-    setData({ ...data, image: null } as IPost);
+    setData({ ...data, image: undefined });
   };
 
   const handleSubmit = async (e: FormEvent): Promise<void> => {
     e.preventDefault();
     setLoading(true);
-    const { data: response, status } = await http.post("/post", data);
+    const { data: response, status } = await http.post(
+      "/stakeholder",
+      data
+    );
     if (status === 201) {
-      toastr.success(`${(response as any).data.title} successfully created`);
+      toastr.success(`${(response as any).data.name} successfully created`);
       setData(undefined);
       setLoading(false);
       inputRef.current.click();
@@ -108,7 +79,7 @@ const Post = ({ dataa }: { dataa: string }) => {
     }
 
     if (status === 413) {
-      toastr.error("Video too large");
+      toastr.error("Image too large");
       setLoading(false);
       return;
     }
@@ -123,11 +94,11 @@ const Post = ({ dataa }: { dataa: string }) => {
     e.preventDefault();
     setLoading(true);
     const { data: response, status } = await http.put(
-      `/post/${post._id}`,
+      `/stakeholder/${stakeholder._id}`,
       data
     );
     if (status === 200) {
-      toastr.success(`${data!.title} successfully updated`);
+      toastr.success(`${data!.name} successfully updated`);
       setLoading(false);
       return;
     }
@@ -143,11 +114,11 @@ const Post = ({ dataa }: { dataa: string }) => {
   };
 
   useEffect(() => {
-    setData(post);
-    if (!!post._id) {
-      setUpdateNotPost(true);
+    setData(stakeholder);
+    if (!!stakeholder?._id) {
+      setUpdateNotstakeholder(true);
     }
-  }, [post]);
+  }, [stakeholder]);
   return (
     <Layout>
       <Paper>
@@ -155,7 +126,7 @@ const Post = ({ dataa }: { dataa: string }) => {
           <div className="post-card">
             <form
               className="post-card-form"
-              onSubmit={updateNotPost ? handleUpdate : handleSubmit}
+              onSubmit={updateNotstakeholder ? handleUpdate : handleSubmit}
             >
               <TextField
                 name="image"
@@ -163,7 +134,7 @@ const Post = ({ dataa }: { dataa: string }) => {
                 id="video"
                 onChange={handleFileUpload}
                 helperText={<span>{inputHelperText}</span>}
-                placeholder="Select a video"
+                placeholder="Select an image"
               />
 
               {data?.image && (
@@ -172,69 +143,36 @@ const Post = ({ dataa }: { dataa: string }) => {
                 </button>
               )}
               <TextField
-                name="title"
+                name="name"
                 type="text"
                 onChange={handleChange}
-                label="Post Title"
-                value={data?.title}
+                label="Stakeholder Title"
+                value={data?.name}
               />
-              {!!!post._id && (
-                <TextField
-                  name="createdAt"
-                  type="datetime-local"
-                  onChange={handleChange}
-                  helperText={<span>Select the publishing date and time</span>}
-                  value={data?.createdAt}
-                />
-              )}
               <TextField
-                name="body"
+                name="description"
                 multiline
                 rows={6}
                 onChange={handleChange}
-                label="Post Content"
-                value={data?.body}
+                label="Stakeholder Description"
+                value={data?.description}
               />
-              <TextField
-                name="resource"
-                type="file"
-                onChange={handleFileUpload}
-                helperText={<span>Select a resource (pdf, docx) etc</span>}
-              />
-              <div style={{ display: "flex" }}>
-                <TextField
-                  name="author"
-                  type="text"
-                  onChange={handleChange}
-                  label={`Author`}
-                  helperText={<span>Author's Name</span>}
-                  value={data?.author?.name}
-                />
-
-                <TextField
-                  name="authorImage"
-                  type="file"
-                  className="ml-auto"
-                  onChange={handleFileUpload}
-                  helperText={<span>Select author's image</span>}
-                />
-              </div>
               <Button type="submit" disabled={loading}>
                 {loading ? (
                   <Spinner animation="border" />
-                ) : !!post._id ? (
+                ) : !!stakeholder?._id ? (
                   "Update"
                 ) : (
-                  "Post"
+                  "Submit"
                 )}
               </Button>
-              {!!!post._id && (
+              {!!!stakeholder?._id && (
                 <Button
                   type="reset"
                   variant="danger"
                   ref={inputRef}
                   onClick={() =>
-                    setData({ body: "", title: "", author: { name: "" } })
+                    setData({ name: "", description: "", image: "" })
                   }
                 >
                   Reset
@@ -242,7 +180,23 @@ const Post = ({ dataa }: { dataa: string }) => {
               )}
             </form>
           </div>
-          <PostCard {...data} loading={fileLoading} page="preview" />
+          <div style={{flex: 1}}>
+            <Card className="border-none  portfolio-card">
+              <Card.Img
+                variant="top"
+                className="card-img"
+                src={data?.image}
+                alt={data?.name}
+              />
+              <Card.Body>
+                <Card.Title className="font-bold">{data?.name}</Card.Title>
+                <Card.Text className="text-justify">
+                  {data?.description}
+                </Card.Text>
+              </Card.Body>
+              <Card.Footer className="card-footer"></Card.Footer>
+            </Card>
+          </div>
         </div>
       </Paper>
     </Layout>
@@ -258,4 +212,4 @@ export const getStaticProps: GetStaticProps = async (context) => {
   };
 };
 
-export default Post;
+export default stakeholder;

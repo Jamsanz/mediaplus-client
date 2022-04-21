@@ -6,6 +6,7 @@ export interface IImage {
 
 export interface img {
     data: string;
+    type: string;
     fileName: string;
 }
 

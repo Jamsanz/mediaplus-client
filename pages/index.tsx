@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React, {useEffect} from "react";
 
 import { Main, Cards } from "@components";
 import Layout from "@components/layout";
@@ -10,7 +10,7 @@ import { http } from "../utils/utils";
 const Home: React.FC = (): JSX.Element => {
   useEffect(() => {
     http.get('/');
-  }, [])
+  }, []);
   return (
     <div className="d-flex flex-column min-vh-100">
       <Layout>
@@ -25,5 +25,3 @@ const Home: React.FC = (): JSX.Element => {
 };
 
 export default Home;
-
-{/* <button className="fab">+</button> */}

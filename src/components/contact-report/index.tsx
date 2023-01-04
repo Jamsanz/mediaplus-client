@@ -49,7 +49,7 @@ const Contacts: React.FC = ({ contact }: any): JSX.Element => {
               name: contacts.name,
               email: contacts.email,
               phone: contacts.phone,
-              date: contacts.createdAt ? moment(contacts.createdAt).format("D MMMM, YYYY h: mm: ss A") : '',
+              date: contacts.createdAt ? moment(contacts.createdAt).format("D MMMM, YYYY") : '',
               service: contacts.service,
               status: contacts.status,
               message: contacts.message,
@@ -127,7 +127,6 @@ const Contacts: React.FC = ({ contact }: any): JSX.Element => {
           rows={rows}
           columns={columns}
           pagination
-          onRowClick={handleDetails}
           onSelectionModelChange={handleOnSelectionModelChange}
           pageSize={pageSize}
           onPageSizeChange={handlePageSizeChange}

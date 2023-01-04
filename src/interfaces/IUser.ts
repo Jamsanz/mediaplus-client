@@ -4,6 +4,7 @@ export interface IUser {
     phone?: string;
     email?: string;
     message?: string;
+    createdAt?: string;
     status?: 'Resolved' | 'Pending' | 'In-Progress' | 'New';
     service?: string
 }

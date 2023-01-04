@@ -14,6 +14,7 @@ import Layout from "../../../src/components/adminLayout";
 import router from "next/router";
 import { Paper } from "@mui/material";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import moment from "moment";
 // import Link from 'next/link';
 
 const Details = ({ data }: { data: IUser }) => {
@@ -59,6 +60,19 @@ const Details = ({ data }: { data: IUser }) => {
               onChange={handleChange}
               name="phone"
               value={user?.phone}
+              required
+              readOnly
+            />
+          </div>
+          <div className="contact-input">
+            <i className="fas fa-calendar"></i>
+            <input
+              id="email"
+              placeholder="Email"
+              type="text"
+              onChange={handleChange}
+              name="email"
+              value={moment(user?.createdAt).format("Do MMMM, YYYY h: mm: ss A")}
               required
               readOnly
             />

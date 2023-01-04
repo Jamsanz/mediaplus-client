@@ -14,12 +14,14 @@ import {
 } from '@mui/x-data-grid';
 import { useEffect } from 'react';
 import router from 'next/router';
+import moment from 'moment';
 
 const columns: GridColDef[] = [
 
   { field: 'name', headerName: 'Full Name', width: 200, editable: false },
   { field: 'email', headerName: 'E-Mail', width: 200, editable: false },
   { field: 'phone', headerName: 'Phone', type: 'number', width: 150, editable: false },
+  { field: 'date', headerName: 'Date', width: 150, editable: false },
   { field: 'service', headerName: 'Service', width: 150, editable: false },
   { field: 'status', headerName: 'Status', width: 150, editable: true },
   { field: 'message', headerName: 'Message', width: 700, editable: true },
@@ -35,10 +37,11 @@ const Contacts: React.FC = ({ contact }: any): JSX.Element => {
   const [rows, setRows] = React.useState<any[]>([]);
   const [view, setView] = React.useState<boolean>(false);
   const [deleteData, setDeleteData] = React.useState<any[]>([]);
+
   useEffect(() => {
     http.get('/contacts')
       .then(contact =>
-        (contact as any).data.contacts.map((contacts: any) => {
+        (contact as any).data.contacts.sort((a: any, b: any) => +new Date(b.createdAt!) - +new Date(a.createdAt!)).map((contacts: any) => {
           setRows(rows => [
             ...rows,
             {
@@ -46,7 +49,7 @@ const Contacts: React.FC = ({ contact }: any): JSX.Element => {
               name: contacts.name,
               email: contacts.email,
               phone: contacts.phone,
-              // subject:contacts.subject,
+              date: contacts.createdAt ? moment(contacts.createdAt).format("D MMMM, YYYY h: mm: ss A") : '',
               service: contacts.service,
               status: contacts.status,
               message: contacts.message,
@@ -54,9 +57,6 @@ const Contacts: React.FC = ({ contact }: any): JSX.Element => {
         })
       )
   }, []);
-
-
-
 
   const handleEditCellChangeCommitted = (params: GridCellEditCommitParams) => {
     const { id, field, value } = params;

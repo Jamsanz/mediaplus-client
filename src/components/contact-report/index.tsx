@@ -142,11 +142,4 @@ const Contacts: React.FC = ({ contact }: any): JSX.Element => {
   )
 }
 
-// export const getStaticProps: GetStaticProps = async () =>{
-//   const contacts = await http.get("/contacts");
-//     return{
-//         props:{contacts: (contacts as any).data.contacts}
-//     }
-// }
-
 export default Contacts;

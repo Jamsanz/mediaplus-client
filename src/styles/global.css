@@ -9,6 +9,10 @@ body {
   overflow-x: hidden;
 }
 
+.ql-editor{
+  min-height: 10em;
+}
+
 #plus {
   color: rgb(151, 151, 223);
 }

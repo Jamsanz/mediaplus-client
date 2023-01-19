@@ -66,8 +66,8 @@ const PostCard = ({
               ? "text-justify mb-3 mt-3 text-ellipsis"
               : "text-justify mb-3 mt-3"
           }
+          dangerouslySetInnerHTML={{__html: body}}
         >
-          {body}
         </p>
       )}
       {page !== "blog" && resource && (

@@ -18,6 +18,7 @@ import { useSelector } from "react-redux";
 import { postSelector } from "@redux/slices/post";
 import IAuthor from "../../src/interfaces/IAuthor";
 import axios from "axios";
+import Editor from "@components/Editor/editor";
 
 const Post = ({ dataa }: { dataa: string }) => {
   const [data, setData] = useState<IPost>();
@@ -187,14 +188,17 @@ const Post = ({ dataa }: { dataa: string }) => {
                   value={data?.createdAt}
                 />
               )}
-              <TextField
+              {/* <TextField
                 name="body"
                 multiline
                 rows={6}
                 onChange={handleChange}
                 label="Post Content"
                 value={data?.body}
-              />
+              /> */}
+              <div className="">
+                <Editor value={data?.body} onChange={(e) => setData({ ...data, body: e })} />
+              </div>
               <TextField
                 name="resource"
                 type="file"

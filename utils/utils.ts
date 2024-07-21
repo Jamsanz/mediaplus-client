@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 const baseURL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:5000"
-    : "https://server.atmediaplus-consultancy.org/";
+    : "https://mediaplus-server.onrender.com/";
 
     
 export const http = axios.create({

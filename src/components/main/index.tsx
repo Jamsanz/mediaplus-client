@@ -21,7 +21,7 @@ export const Main: React.FC = (): JSX.Element => {
         <Row className="py-5">
           <Col lg={6} md={6} xs={12}>
             <h1 className="display-3">
-              <span id="plus">@</span>Media+ Limited Consultancy
+              <span id="plus">@</span>Media+ Limited
             </h1>
             <p className="lead">
               Your number one Research and Media consult!

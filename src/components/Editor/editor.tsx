@@ -1,20 +1,28 @@
-import React, { ChangeEvent, useState } from 'react';
-import dynamic from "next/dynamic";
-const ReactQuill = dynamic(import('react-quill'), { ssr: false })
-import 'react-quill/dist/quill.snow.css';
+import React, { useRef } from 'react';
 
+
+import dynamic from 'next/dynamic';
+const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
 interface IEditor {
   value?: string;
   onChange: (e: string) => void
 }
+
+const initialValue = [{ type: "paragraph", children: [{ text: "Start typing..." }] }];
 const Editor: React.FC<IEditor> = (props) => {
+  const editor = useRef(null);
+  const config = {
+    readonly: false,
+    height: 400
+  };
+
 
   return (
-    <ReactQuill
-      theme="snow"
+    <JoditEditor
+      ref={editor}
       value={props.value}
-      onChange={props.onChange}
-      placeholder="Write something..."
+      config={config}
+      onBlur={props.onChange}
     />
   );
 };

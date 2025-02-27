@@ -28,7 +28,7 @@ function Copyright(props: any) {
 
 const theme = createTheme();
 
-const SignIn: React.FC = (): JSX.Element => {
+const SignIn: React.FC = () => {
 
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');

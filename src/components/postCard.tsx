@@ -18,7 +18,7 @@ const PostCard = ({
   page,
   resource,
   loading,
-}: IPost): JSX.Element => {
+}: IPost) => {
   const mediaType =
     image?.type?.includes("video") ||
     image?.data.substring(0, 15).includes("video");
@@ -34,8 +34,8 @@ const PostCard = ({
               src={image?.data}
               controls
               className={page !== "details" ? previewPage : detailsPage}
-              //   onLoadStart={handleVideoLoadStart}
-              //   onLoadedData={handleVideoLoadEnd}
+            //   onLoadStart={handleVideoLoadStart}
+            //   onLoadedData={handleVideoLoadEnd}
             />
           )}
 
@@ -54,7 +54,7 @@ const PostCard = ({
       )}
 
       {title && (
-        <Link href={_id ? `/post/${_id}` : `#`}>
+        <Link legacyBehavior href={_id ? `/post/${_id}` : `#`}>
           <a className="title-link mt-3 text-justify">{title}</a>
         </Link>
       )}
@@ -66,7 +66,7 @@ const PostCard = ({
               ? "text-justify mb-3 mt-3 text-ellipsis"
               : "text-justify mb-3 mt-3"
           }
-          dangerouslySetInnerHTML={{__html: body}}
+          dangerouslySetInnerHTML={{ __html: body }}
         >
         </p>
       )}

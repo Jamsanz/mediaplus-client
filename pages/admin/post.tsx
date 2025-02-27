@@ -14,8 +14,8 @@ import Layout from "../../src/components/adminLayout";
 import PostCard from "../../src/components/postCard";
 import { Button, Spinner } from "react-bootstrap";
 import toastr, { http } from "utils/utils";
-import { useSelector } from "react-redux";
-import { postSelector } from "@redux/slices/post";
+import { useDispatch, useSelector } from "react-redux";
+import { addPost, postSelector } from "@redux/slices/post";
 import IAuthor from "../../src/interfaces/IAuthor";
 import axios from "axios";
 import Editor from "@components/Editor/editor";
@@ -28,6 +28,7 @@ const Post = ({ dataa }: { dataa: string }) => {
   const inputRef = useRef<any>(null);
   const inputHelperText = `Select a media of type .mp4, .avi, .mkv, jpg, png etc`;
 
+  const dispatch = useDispatch();
   const post = useSelector(postSelector);
 
   const handleChange = (
@@ -147,6 +148,10 @@ const Post = ({ dataa }: { dataa: string }) => {
     setData(post);
     if (!!post._id) {
       setUpdateNotPost(true);
+    }
+
+    return () => {
+      dispatch(addPost({}));
     }
   }, [post]);
   return (

@@ -8,23 +8,24 @@ import {
   FormControl,
   FormGroup,
   InputGroup,
-  Jumbotron,
   Spinner,
   Row
 } from 'react-bootstrap';
+
 import toastr, { http } from 'utils/utils';
 import AOS from 'aos';
 import 'aos/dist/aos.css'
 import router from 'next/router';
 
-const ContactForm: React.FC = (): JSX.Element => {
+const ContactForm: React.FC = () => {
   const [user, setUser] = useState<IUser>();
   const [Loading, setLoading] = useState<boolean>(false);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>): void => {
+  const handleChange = (e: ChangeEvent<any>): void => {
     const { name, value } = e.target;
     const data: { [key: string]: any } = { ...user };
     data[name] = value;
+    console.log({ data });
     setUser(data as IUser);
   };
 
@@ -63,7 +64,7 @@ const ContactForm: React.FC = (): JSX.Element => {
       <Container id="contact">
         <Row>
           <Col lg={6}>
-            <Jumbotron className="mt-5" data-aos="fade-right">
+            <div className="jumbotron mt-5" data-aos="fade-right">
               <h1>Get In Touch</h1>
               <p className='mt-4 text-left fa-1x'>
                 <i className="fas fa-map-marker-alt mr-3 "></i>
@@ -75,9 +76,11 @@ const ContactForm: React.FC = (): JSX.Element => {
               </p>
               <p>
                 <i className="fas fa-envelope mr-3"></i>
-                mediaplus1120@gmail.com
+                meedia.pluss@gmail.com <br />
+                <i className="fas fa-envelope mr-3"></i>
+                meedia.pluss@gmail.com
               </p>
-            </Jumbotron>
+            </div>
           </Col>
           <Col lg={6} className="py-5" data-aos="fade-left">
             <h3 className="text-center mb-3">Contact Us</h3>
@@ -122,7 +125,7 @@ const ContactForm: React.FC = (): JSX.Element => {
                 <i className="fas fa-network-wired"></i>
                 <select
                   id="service"
-                  placeholder="Service required"
+                  // placeholder="Service required"
                   onChange={handleChange}
                   name="service"
                   value={user?.service}
@@ -152,9 +155,9 @@ const ContactForm: React.FC = (): JSX.Element => {
               <FormGroup>
                 <Button
                   type="submit"
-                  block
-                  size="lg"
+                  size='lg'
                   variant="primary"
+                  className='mt-2 w-full'
                   disabled={Loading}
                 >
                   {Loading ? <Spinner animation="border" /> : "Submit"}

@@ -321,6 +321,10 @@ input[type="datetime-local"]:focus {
     background-size: 100% 100%;
   }
 
+  .col-hidden {
+    height: 0px;
+  }
+
   .section-img {
     width: 100%;
     height: 350px;
@@ -333,10 +337,10 @@ input[type="datetime-local"]:focus {
   margin-bottom: 15px;
 }
 
-.main-img {
-  width: 100%;
-  z-index: -1;
-  object-fit: cover;
+.py-3{
+  /* height: fit-content; */
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
 
 .section-img {
@@ -569,3 +573,76 @@ hr {
 /* .img{
   
 } */
+
+/* Jumbotron */
+
+.container-fluid .jumbotron,
+.container .jumbotron {
+  border-radius: 6px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+@media screen and (min-width: 768px) {
+
+  .container-fluid .jumbotron,
+  .container .jumbotron {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+    .main-img {
+      width: 100%;
+      z-index: -1;
+      object-fit: cover;
+      min-height: 350px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+  .jumbotron {
+    padding-bottom: 48px;
+    padding-top: 48px;
+  }
+}
+
+.jumbotron {
+  background-color: #eee;
+  padding-left: 60px;
+  padding-right: 60px;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+
+.h-screen {
+  height: 100vh;
+}
+
+.grid {
+  display: grid;
+}
+.flex {
+  display: flex;
+}
+.flex-col{
+  flex-direction: column;
+}
+.gap-4 {
+  gap: 16px;
+}
+.justify-center{
+  justify-content: center;
+}
+.items-center{
+  align-items: center;
+}
+
+.place-items-center{
+  place-items: center;
+}
+.w-full {
+  width: 100%;
+}
+.h-300{
+  min-height: 300px;
+}

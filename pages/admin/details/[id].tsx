@@ -8,10 +8,11 @@ import {
   FormControl,
   FormGroup,
   InputGroup,
+  Spinner,
 } from "react-bootstrap";
 import axios, { AxiosResponse } from "axios";
 import Layout from "../../../src/components/adminLayout";
-import router from "next/router";
+import router, {useRouter} from "next/router";
 import { Paper } from "@mui/material";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import moment from "moment";
@@ -20,6 +21,14 @@ import moment from "moment";
 const Details = ({ data }: { data: IUser }) => {
   const [user, setUser] = useState<IUser>(data);
   const [Loading, setLoading] = useState<boolean>(false);
+  const route = useRouter();
+
+  if (route.isFallback) {
+    return <div className='h-screen flex justify-center items-center flex-col gap-4'>
+      <Spinner animation="border" />
+      <p>Loading...</p>
+    </div>
+  }
 
   // eslint-disable-next-line no-empty-function
   const handleChange = (e: ChangeEvent): void => {};
@@ -94,7 +103,7 @@ const Details = ({ data }: { data: IUser }) => {
             <i className="fas fa-network-wired"></i>
             <select
               id="service"
-              placeholder="Service required"
+              // placeholder="Service required"
               onChange={handleChange}
               name="service"
               value={user?.service}
@@ -160,7 +169,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   });
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 };
 

@@ -4,7 +4,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 
-const Section: React.FC = (): JSX.Element => {
+const Section: React.FC = () => {
   useEffect(() => {
     AOS.init({
       duration: 2000,
@@ -23,7 +23,7 @@ const Section: React.FC = (): JSX.Element => {
             <p>
               @Media+ is a media consulting firm involved in Media Campaign,
               Social Media Marketing and Campaign,
-              Advertising and PR campaign, social and media research, media training, 
+              Advertising and PR campaign, social and media research, media training,
               writing of speeches,
               publishing, content production, Measurement and Evaluation etc...
             </p>

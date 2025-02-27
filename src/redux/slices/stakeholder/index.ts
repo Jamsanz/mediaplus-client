@@ -15,7 +15,7 @@ const stakeholderSlice = createSlice({
     addStakeholder: (state, action) => {
       return (state = action.payload);
     },
-    getStakeholder: (state, action) => {
+    getStakeholder: (state) => {
       return state;
     },
   },

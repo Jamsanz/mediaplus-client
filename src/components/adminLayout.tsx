@@ -21,7 +21,7 @@ import PostAddIcon from '@mui/icons-material/PostAdd';
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import PeopleIcon from "@mui/icons-material/People";
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
+import { JSX, useEffect, useState } from 'react';
 import router from 'next/router';
 import { Tooltip } from '@mui/material';
 import { LogOut } from 'utils/utils';
@@ -99,7 +99,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-const AdminLayout: React.FC = ({ children }: any): JSX.Element => {
+const AdminLayout: React.FC<{ children: any }> = ({ children }: any) => {
   const [loaded, setLoaded] = useState<boolean>(false);
   const theme = useTheme();
   const [open, setOpen] = useState(false);
@@ -217,5 +217,6 @@ const AdminLayout: React.FC = ({ children }: any): JSX.Element => {
         <Spinner animation="border" variant="primary" />
       </div>
   );
-}
+};
+
 export default AdminLayout

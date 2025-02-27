@@ -5,7 +5,7 @@ import React, { useEffect } from 'react'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-const Layout = ({ children }: any): JSX.Element => {
+const Layout = ({ children }: any) => {
   useEffect(() => {
     AOS.init({
       duration: 1000,

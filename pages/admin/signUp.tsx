@@ -18,7 +18,7 @@ function Copyright(props: any) {
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <Link color="inherit" href="/">
-          @Media+
+        @Media+
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -28,11 +28,11 @@ function Copyright(props: any) {
 
 const theme = createTheme();
 
-const SignUp: React.FC = (): JSX.Element => {
+const SignUp: React.FC = () => {
 
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const [Loading, setLoading] = useState<boolean>(false);  
+  const [Loading, setLoading] = useState<boolean>(false);
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
@@ -53,7 +53,7 @@ const SignUp: React.FC = (): JSX.Element => {
         setLoading(false);
         toastr.error(`User already exists`);
       });
-  };  
+  };
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">

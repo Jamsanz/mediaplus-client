@@ -14,6 +14,8 @@ const Blog = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [pages, setPages] = useState<number[]>();
 
+  const [loading, setLoading] = useState<boolean>(false);
+
   const indexOfFirstItem = (currentPage - 1) * itemsPerPage;
   const indexOfLastItem = itemsPerPage * currentPage;
 
@@ -43,10 +45,11 @@ const Blog = () => {
   }, [data]);
 
   useEffect(() => {
+    setLoading(true);
     http
       .get("/post")
       .then((res: any) => setData(res.data.Posts))
-      .catch((e) => console.error(e));
+      .catch((e) => console.error(e)).finally(() => setLoading(false));
   }, []);
 
   return (
@@ -63,7 +66,7 @@ const Blog = () => {
           />
         </section>
         <section className="mt-5 pt-5">
-          {data ? (
+          {!loading ? (
             <Row>
               {data &&
                 currentItems.map((data: IPost, index) => (

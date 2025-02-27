@@ -31,7 +31,7 @@ const columns: GridColDef[] = [
 
 
 
-const Contacts: React.FC = ({ contact }: any): JSX.Element => {
+const Contacts: React.FC = ({ contact }: any) => {
   const [user, setUser] = React.useState<any>();
   const [id, setId] = React.useState<string>('');
   const [rows, setRows] = React.useState<any[]>([]);

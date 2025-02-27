@@ -3,7 +3,7 @@ import { Col, Container, Row, Card, Modal } from "react-bootstrap";
 import { data as d, http } from "utils/utils";
 import { IStakeholder } from "../../interfaces/IStakeholder";
 
-const Portfolio = (): JSX.Element => {
+const Portfolio = () => {
   const [data, setData] = useState<IStakeholder[]>(d);
   const [show, setShow] = useState<boolean>(false);
   const [modalData, setModalData] = useState<IStakeholder>();

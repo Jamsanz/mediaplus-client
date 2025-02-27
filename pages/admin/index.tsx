@@ -3,7 +3,7 @@ import Layout from '../../src/components/adminLayout'
 import Paper from '@mui/material/Paper'
 import Contacts from '@components/contact-report'
 
-const Home: React.FC = (): JSX.Element => {
+const Home: React.FC = () => {
 
   return (
     <Layout>

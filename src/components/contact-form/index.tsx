@@ -76,7 +76,7 @@ const ContactForm: React.FC = () => {
               </p>
               <p>
                 <i className="fas fa-envelope mr-3"></i>
-                meedia.pluss@gmail.com <br />
+                mediaplus2021@yahoo.com <br />
                 <i className="fas fa-envelope mr-3"></i>
                 meedia.pluss@gmail.com
               </p>

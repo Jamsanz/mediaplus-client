@@ -45,7 +45,7 @@ const Section: React.FC = () => {
         </Col>
         <Col md={6} xs={12} className="order-lg-1 mt-4">
           <img
-            src="/images/logo-1.jpg"
+            src="/images/banner.jpg"
             alt='@Media+ banner'
             className="section-img"
           />

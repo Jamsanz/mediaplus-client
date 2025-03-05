@@ -44,7 +44,7 @@ const Section: React.FC = () => {
               relations, brand management and OPR etc.
             </p>
 
-            <p><strong>Check out our blogs for our works: <Link legacyBehavior href="/blog"><a className="text-black my-3 underline" style={{ "text-decoration": "underline"}}>Blog</a></Link></strong></p>
+            <p><strong>Check out our blogs for our works: <Link legacyBehavior href="/blog"><a className="text-black my-3 underline">Blog</a></Link></strong></p>
           </div>
         </Col>
         <Col md={6} xs={12} className="order-lg-1 mt-4">

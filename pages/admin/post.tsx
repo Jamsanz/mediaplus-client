@@ -17,7 +17,7 @@ import toastr, { http } from "utils/utils";
 import { useDispatch, useSelector } from "react-redux";
 import { addPost, postSelector } from "@redux/slices/post";
 import IAuthor from "../../src/interfaces/IAuthor";
-import axios from "axios";
+import axios, { isAxiosError } from "axios";
 import Editor from "@components/Editor/editor";
 
 const Post = ({ dataa }: { dataa: string }) => {
@@ -58,7 +58,6 @@ const Post = ({ dataa }: { dataa: string }) => {
         formData
       )
       .then((res: any) => {
-        setLoading(false);
         if (name === "image") {
           files &&
             setData({
@@ -99,26 +98,34 @@ const Post = ({ dataa }: { dataa: string }) => {
 
   const handleSubmit = async (e: FormEvent): Promise<void> => {
     e.preventDefault();
+
+    if (!data?.title || !data?.author?.name || !data?.body) {
+      toastr.error("Please fill the title, description and author name");
+      return;
+    }
+
     setLoading(true);
-    const { data: response, status } = await http.post("/post", data);
-    if (status === 201) {
-      toastr.success(`${(response as any).data.title} successfully created`);
-      setData(undefined);
+    try {
+      const { data: response, status } = await http.post("/post", data);
+      if (status === 201) {
+        toastr.success(`${(response as any).data.title} successfully created`);
+        inputRef.current.click();
+        setData({});
+        return;
+      }
+    } catch (error) {
+      if (isAxiosError(error)) {
+        if (error.status === 413) {
+          toastr.error("Video too large");
+          setLoading(false);
+        } else {
+          toastr.error(error.response?.data);
+        }
+      }
+    } finally {
       setLoading(false);
-      inputRef.current.click();
-      return;
     }
 
-    if (status === 413) {
-      toastr.error("Video too large");
-      setLoading(false);
-      return;
-    }
-
-    toastr.error(`Something went wrong`);
-    setData(undefined);
-    setLoading(false);
-    inputRef.current.click();
   };
 
   const handleUpdate = async (e: FormEvent): Promise<void> => {

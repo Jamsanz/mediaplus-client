@@ -502,7 +502,7 @@ hr {
   flex-direction: column;
   overflow: auto;
   padding: 30px;
-  height: 500px;
+  /* height: 500px; */
   margin: 10px;
   width: auto;
   background-color: white;
@@ -596,6 +596,9 @@ hr {
       object-fit: cover;
       min-height: 350px;
     }
+     .h-300 {
+          min-height: 300px;
+      }
 }
 
 @media screen and (min-width: 768px) {
@@ -642,7 +645,4 @@ hr {
 }
 .w-full {
   width: 100%;
-}
-.h-300{
-  min-height: 300px;
 }

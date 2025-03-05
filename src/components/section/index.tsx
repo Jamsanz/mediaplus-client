@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Link from 'next/link';
 
 
 const Section: React.FC = () => {
@@ -40,7 +41,10 @@ const Section: React.FC = () => {
             </p>
             <p>
               We are experts in crises communication, event planning, issues management
-              relations, brand management and OPR etc.</p>
+              relations, brand management and OPR etc.
+            </p>
+
+            <p><strong>Check out our blogs for our works: <Link legacyBehavior href="/blog"><a className="text-black my-3 underline" style={{ "text-decoration": "underline"}}>Blog</a></Link></strong></p>
           </div>
         </Col>
         <Col md={6} xs={12} className="order-lg-1 mt-4">

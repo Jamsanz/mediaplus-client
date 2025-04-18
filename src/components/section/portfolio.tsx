@@ -22,7 +22,7 @@ const Portfolio = () => {
   return (
     <Container className="my-5 flex-grow-1">
       <div className="services-header my-5 text-center transition">
-        <h1 className="text-center">Stakeholders</h1>
+        <h1 className="text-center">Out Team of Experts</h1>
         <hr />
       </div>
       <Row data-aos="fade-up">

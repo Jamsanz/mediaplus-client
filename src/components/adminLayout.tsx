@@ -197,13 +197,13 @@ const AdminLayout: React.FC<{ children: any }> = ({ children }: any) => {
                 <ListItemIcon>
                   <PeopleIcon />
                 </ListItemIcon>
-                <ListItemText primary="Our Team of Experts" />
+                <ListItemText primary="Team of Experts" />
               </ListItem>
               <ListItem button onClick={() => router.push('/admin/postStakeholder')}>
                 <ListItemIcon>
                   <PersonAddIcon />
                 </ListItemIcon>
-                <ListItemText primary="Add Stakeholder" />
+                <ListItemText primary="Add Expert" />
               </ListItem>
             </List>
           </Drawer>

@@ -146,7 +146,7 @@ const stakeholder = () => {
                 name="name"
                 type="text"
                 onChange={handleChange}
-                label="Stakeholder Title"
+                label="Name"
                 value={data?.name}
               />
               <TextField
@@ -154,7 +154,7 @@ const stakeholder = () => {
                 multiline
                 rows={6}
                 onChange={handleChange}
-                label="Stakeholder Description"
+                label="Description"
                 value={data?.description}
               />
               <Button type="submit" disabled={loading}>
